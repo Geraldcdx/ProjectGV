@@ -661,6 +661,8 @@ if(lastpart_movie  === "6808"){
 <p class="ticket-content">
 <select class="form-control btn btn-default btn-sm dropdown-toggle ng-pristine ng-valid" aria-haspopup="true" aria-expanded="false" ng-model="selMovieCinema" ng-options="movCin.name for movCin in movieCinemas" ng-change="selectCinema(selMovieCinema)">
 <option value=""> Select a Cinema </option>
+  <option value="">GV Vivocity</option> <--!Add Value of Cinema!-->
+  <option value="">GV Plaza</option>
 </select>
 </p>
 </li>
@@ -669,6 +671,8 @@ if(lastpart_movie  === "6808"){
 <p class="ticket-content">
 <select class="form-control btn btn-default btn-sm dropdown-toggle ng-pristine ng-valid" aria-haspopup="true" aria-expanded="false" ng-model="selMovieDate" ng-options="movDate.convertedDate for movDate in selMovieCinema.dates" ng-change="selectMovieDate(selMovieDate)">
 <option value="">Select Date</option>
+  <option value="">Today</option>
+  <option value="">Tomorrow</option>
 </select>
 </p>
 </li>
@@ -677,6 +681,9 @@ if(lastpart_movie  === "6808"){
 <p class="ticket-content">
 <select class="form-control btn btn-default btn-sm dropdown-toggle ng-pristine ng-valid" aria-haspopup="true" aria-expanded="false" ng-model="selMovieTime" ng-options="movTime.convertedTime for movTime in selMovieDate.times" ng-change="selectMovieTime(selMovieTime)">
 <option value="">Select Time</option>
+  <option value="">1430</option>
+  <option value="">1830</option>
+  <option value="">2030</option>
 </select>
 </p>
 </li>
@@ -704,9 +711,58 @@ if(lastpart_movie  === "6808"){
 <div style="text-align:center" ng-if="selMovieCinema.name.indexOf('Capitol') > -1 && selMovieTime.hallNumber=='4'" ng-cloak>
 <img src="https://media.gv.com.sg/movies/images/gv@capital_L4a.gif" border=“0” style="margin: 0 auto; border: none;" width="100%" />
 </div>
-<span ng-show="isMaintenance" class="help-inline alert alert-danger">Need to edit row and cols for choosing seats</span>
 </div>
+ <!-- Add the information for seating here !-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+<script>
+  var numOfSeats = 0;
+  $(document).ready(function(){
+  $(".square").click(function(){
+    
+    if ($(this).css('background-color')=="rgb(0, 0, 255)")
+    {
+      $(this).css("background-color", "#555");
+     numOfSeats = numOfSeats  -1;
+    }
+    else{
+    $(this).css("background-color", "blue");
+      numOfSeats = numOfSeats + 1;
+    }
+    //alert(numOfSeats);
+  });
+});
+</script>
+  <h3 style="text-align:center">Seats Available</>
+    <h4 style="text-align:center">Screen</4>
+  <table style="width:13%; margin: auto; padding:1px">
+    <tr>
+      <th style="text-align:center"></th>
+      <th style="text-align:center">1</th>
+      <th style="text-align:center">2</th>
+      <th style="text-align:center">3</th>
+      <th style="text-align:center">4</th>
+    </tr>
+    <tr>
+      <td style="text-align:center">A</td>
+      <td style="text-align:center"><div class="square" style="margin:auto"></div></td>
+      <td style="text-align:center"><div class="square" style="margin:auto"></div></td>
+      <td style="text-align:center"><div class="square" style="margin:auto"></div></td>
+      <td style="text-align:center"><div class="square" style="margin:auto"></div></td>
+    </tr>
+  </table>
+  <style>
+    .square:hover {
+  background-color: grey;
+}
 
+    .square {
+  height: 20px;
+  width: 20px;
+  background-color: #555;
+ 
+}
+  </style>
 <div id="seatselection">
 <div id="seatselectioncontent" ng-show="seatselectionrows.length > 0">
 <div style="margin: 3px;text-align:center; height:auto;line-height:normal;color:rgba(255, 255, 255, 0.8)" ng-if="selectedCinemaTime.time.midnight">
@@ -716,7 +772,7 @@ You have selected <span ng-init="dt1 = getShowDateTime()" ng-bind-html="dt1"></s
 <div class="seatselector" style="height: auto;">
 <div class="seatrowscontainer" style="height: auto;">
 <div align="center">
-<div id="screen" class="screen">Screen</div>
+
 <div ng-repeat="row in seatselectionrows">
 <div class="seatrow" style="height:24px; width:auto;">
 <div class="seatrowname seatrowname-left">
@@ -726,7 +782,7 @@ You have selected <span ng-init="dt1 = getShowDateTime()" ng-bind-html="dt1"></s
 <div class="seatstatuscontainer" ng-style="(seat.damaged) && {'opacity':'0.4'}" ng-disabled="(seat.damaged) || (seat.status == 'B') || (seat.status == 'R')" ng-show="seat.id != NULL" ng-click="selectseat(seat);" tooltip="{{seat.rowId + ':'+ seat.columnId}}" tooltip-append-to-body="true" id="{{seat.img}}">
 <div class="seatstatustype">
 <div class="seatstatus">
-<img ng-src="{{seat.image}}" />
+<img src="https://static.thenounproject.com/png/661611-200.png" />
 </div>
 </div>
 </div>
@@ -750,49 +806,20 @@ You have selected <span ng-init="dt1 = getShowDateTime()" ng-bind-html="dt1"></s
 </div>
 <div class="legend" id="legend">
 <div class="legenditem">
-<div class="legendlogo"><img ng-src="https://media.gv.com.sg/cms/resources/templating-kit/themes/gv/images/seat_available.gif" /></div>
+<div class="legendlogo"><div class="square" style="background-color:grey"></div></div>
 <span>Available</span></div>
 <div class="legenditem">
-<div class="legendlogo"><img ng-src="https://media.gv.com.sg/cms/resources/templating-kit/themes/gv/images/seat_taken.gif" /></div>
+  <div class="legendlogo"><div class="square" style="background-color:red"></div></div>
 <span>Occupied</span></div>
 <div class="legenditem">
-<div class="legendlogo"><img ng-src="https://media.gv.com.sg/cms/resources/templating-kit/themes/gv/images/seat_selected.gif" /></div>
+<div class="legendlogo"><div class="square" style="background-color:blue"></div></div>
 <span>Selected</span></div>
-<div class="legenditem">
-<div class="legendlogo"><img ng-src="https://media.gv.com.sg/cms/resources/templating-kit/themes/gv/images/seat_held.gif" /></div>
-<span>Blocked</span></div>
-<div class="legenditem">
-<div class="legendlogo"><img ng-src="https://media.gv.com.sg/cms/resources/templating-kit/themes/gv/images/handicapseat_available.gif" /></div>
-<span>Wheelchair Berth Available</span></div>
-<div class="legenditem">
-<div class="legendlogo"><img ng-src="https://media.gv.com.sg/cms/resources/templating-kit/themes/gv/images/handicapseat_taken.gif" /></div>
-<span>Wheelchair Berth Occupied</span></div>
-<div class="legenditem">
-<div class="legendlogo"><img ng-src="https://media.gv.com.sg/cms/resources/templating-kit/themes/gv/images/seat_gap.gif" /></div>
-<span>Safe Distance</span></div>
-<div class="legenditem" ng-if="isANZSeat">
-<div class="legendlogo"><img ng-src="https://media.gv.com.sg/cms/resources/templating-kit/themes/gv/images/grand_available.gif" /></div>
-<span>Grand Available Seat</span></div>
-<div class="legenditem" ng-if="isANZSeat">
- <div class="legendlogo"><img ng-src="https://media.gv.com.sg/cms/resources/templating-kit/themes/gv/images/grand_taken.gif" /></div>
-<span>Grand Occupied Seat</span></div>
-<div class="legenditem" ng-if="isDBOXSeat">
-<div class="legendlogo"><img ng-src="https://media.gv.com.sg/cms/resources/templating-kit/themes/gv/images/seat_available_d-box.gif" /></div>
-<span>DBOX Available Seat</span></div>
-<div class="legenditem" ng-if="isDBOXSeat">
-<div class="legendlogo"><img ng-src="https://media.gv.com.sg/cms/resources/templating-kit/themes/gv/images/seat_selected_d-box.gif" /></div>
-<span>DBOX Selected Seat</span></div>
-<div class="legenditem" ng-if="isDBOXSeat">
-<div class="legendlogo"><img ng-src="https://media.gv.com.sg/cms/resources/templating-kit/themes/gv/images/seat_taken_d-box.gif" /></div>
-<span>DBOX Occupied Seat</span></div>
+
 </div>
 </div>
 </div>
 </div>
 <div id="warning" ng-show="seatselectionrows.length > 0">
-<div class="warningvalue errortext">{{error}}</div>
-<div class="warningvalue infotext">{{info}}</div>
-<div class="warningvalue warningtext">{{warning}}</div>
 <div style="font-size:18px;color:red;" ng-if="(selMovieCinema.id=='01'||selMovieCinema.id=='04')&&warning.indexOf('specially allocated for wheelchair bound patrons')>-1">
 The wheelchair berth is located at the front row of the cinema.
 <br>You may wish to select other GV locations for better seat options.
@@ -814,8 +841,34 @@ The wheelchair berth is located at the front row of the cinema.
 <div class="row">
 <div class="col-md-3 col-sm-4 col-xs-12"><label>Select Ticket Price:</label></div>
 <div class="col-md-6 col-sm-4 col-xs-12">
-<select class="form-control btn btn-default btn-sm dropdown-toggle ng-pristine ng-valid" aria-haspopup="true" aria-expanded="false" ng-model="selTixType" ng-options="tixType.description for tixType in ticketPriceTypes.tickets" ng-change="selectTixTypeCheck(selTixType)">
+  
+  <script>
+    jQuery(document).ready(function(){
+  $("#tickets").change(function() { //function to change the dropdown
+    var e = document.getElementById("tickets");
+    var strUser = e.options[e.selectedIndex];
+    $(".item-name").text(strUser.text);
+    $(".quantity").text(numOfSeats);
+    $(".ticket-price").text("$S" +strUser.value);
+    var total = parseFloat(numOfSeats) * parseFloat(strUser.value);
+    $(".amount").text("$S" + total.toFixed(2));
+  });
+});
+    
+  </script>
+<select id = "tickets" class="form-control btn btn-default btn-sm dropdown-toggle ng-pristine ng-valid" aria-haspopup="true" aria-expanded="false" ng-model="selTixType" ng-options="tixType.description for tixType in ticketPriceTypes.tickets" ng-change="selectTixTypeCheck(selTixType)">
 <option value="">Select Ticket Type</option>
+ <option value="13.50">$13.50 - Standard Price</option>
+  <option value="13.50">$13.50 - Click to Pay</option>
+  <option value="9.50">$9.50 - HSBC Movie Card - All Days Prepaid Card (Silver)</option>
+  <option value="11.50">$11.50 - HSBC Credit & Debit Card Movie Privilege</option>
+  <option value="12.50">$12.50 - DBS PayLah! Movie Privileges</option>
+  <option value="12.50">$12.50 - DBS/POSB Credit & Debit Card Movie Privileges</option>
+  <option value="7.00">GV 10.10 Movie Deal</option>
+  <option value="10">Movie e-Voucher</option>
+  <option value="10">ePass Code</option>
+  <option value="10">Partner Rewards</option>
+ 
 </select>
 </div>
 </div>
@@ -837,36 +890,31 @@ The wheelchair berth is located at the front row of the cinema.
 </div>
 <div class="row amount-td">
 <div class="col-md-7 col-sm-7 col-xs-5 col-pg-lg-zero">
-<p class="item-name">Isert ticket types and populate (Select Ticket Price:)</p>
-<p class="highlight-red note" ng-show="selTixType.memberOnly"><span class="glyphicon glyphicon-exclamation-sign"></span> Notice: This is GV Member Exclusive price.</p>
+<p class="item-name"></p>
 </div>
 <div class="col-md-2 col-sm-2 col-xs-2 col-pg-lg-zero text-center">
-<p>S$ {{selTixType.discountPrice.toFixed(2)}}</p>
+<p class="ticket-price"></p>
 </div>
 <div class="col-md-1 col-sm-1 col-xs-2 col-pg-lg-zero text-center">
-<p>{{selectedseats.length}}</p>
+<p class="quantity"></p>
 </div>
 <div class="col-md-2 col-sm-2 col-xs-3 col-pg-zero text-center">
-<p>S$ {{selTixType.ticFocTics > 0 ? ((selectedseats.length * selTixType.discountPrice) - (selTixType.ticFocTics * selTixType.discountPrice)).toFixed(2) : (selectedseats.length * selTixType.discountPrice).toFixed(2)}}</p>
+<p class="amount"></p>
 </div>
 </div>
 <div class="row amount-td">
 <div class="col-md-7 col-sm-7 col-xs-5 col-pg-lg-zero">
-<p>Convenience Fee</p>
 </div>
 <div class="col-md-2 col-sm-2 col-xs-2 col-pg-lg-zero text-center">
-<p>S$ {{ticketPriceTypes.bookingFee.toFixed(2)}}</p>
 </div>
 <div class="col-md-1 col-sm-1 col-xs-2 col-pg-lg-zero text-center">
-<p>1</p>
 </div>
 <div class="col-md-2 col-sm-2 col-xs-3 col-pg-zero text-center">
-<p>S$ {{ticketPriceTypes.bookingFee.toFixed(2)}}</p>
+
 </div>
 </div>
 <div class="row total-amount text-right">
 <div class="col-md-3 col-md-offset-9 col-sm-6 col-sm-offset-6 col-xs-6 col-xs-offset-6 col-pg-zero">
-<p>Total:<span class="total">S$ {{selTixType.ticFocTics > 0 ? (((selectedseats.length * selTixType.discountPrice) - (selTixType.ticFocTics * selTixType.discountPrice)) + ticketPriceTypes.bookingFee).toFixed(2) : ((selectedseats.length * selTixType.discountPrice) + ticketPriceTypes.bookingFee).toFixed(2)}}</span></p>
 </div>
 </div>
 </div>
@@ -904,7 +952,7 @@ The wheelchair berth is located at the front row of the cinema.
 </button>
 <div class="v-checkout-wrapper" style="margin: 0 auto; width: 355px;" ng-show="isVisaCheckout==true">
 <button type="button" class="btn btn-third btn-lg" ng-click="resetForm()">Cancel</button>
-<img alt="Visa Checkout" class="v-button" role="button" src="https://secure.checkout.visa.com/wallet-services-web/xo/button.png?color=neutral" />
+<button type="button" class="btn btn-third btn-lg" style="background-color:green" ng-click="">Pay</button>
 <a class="v-learn v-learn-default" href="#" data-locale="en_US" style="float: none; display: block; color: #4989C3; text-align: right;">Tell Me More</a>
 <div id="initialTotalAmount" style="display:none"></div>
 <div id="vc-error" style="color:red;display:none">There was an error processing your Visa Checkout login. Please try again or contact customer support.</div>
