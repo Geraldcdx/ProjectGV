@@ -670,10 +670,8 @@ td, th {
     //function to route
     function changeUrlParas(){
       //input code here to extract the searchbar
-      document.getElementById('go').setAttribute('href',
-                                                 'https://geraldcdx.github.io/ProjectGV/3rdPage?cinema=' 
-                                                 + cinema + "&movie=" + movie + "&timing=" + timing
-                                                );  
+      var str = "https://geraldcdx.github.io/ProjectGV/3rdPage?cinema=" + cinema + "&movie=" + movie + "&timing=" + timing;
+      document.getElementById('go').setAttribute('href', str );   
     }
     
     //convert 24hr to 12hr
