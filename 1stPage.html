@@ -730,9 +730,9 @@ document.getElementById("hover_bkgr_fricc").setAttribute("style", "display:none"
 </button>
 </div>
 <p class="button-section text-center"><a href="javascript:void(0);" class="btn btn-third" role="button" ng-click="resetQckSeachMov()">Reset</a>
-  <a id = "go" onclick ="return changeUrl();" href="https://geraldcdx.github.io/ProjectGV/2ndPage?cinema=x?movie=y?timing=z" class="btn btn-primary" role="button" ng-click="qckSeachMov()">Go</a></p>
+  <a id = "go" onclick ="return changeUrlParas();" href="https://geraldcdx.github.io/ProjectGV/2ndPage?cinema=x?movie=y?timing=z" class="btn btn-primary" role="button" ng-click="qckSeachMov()">Go</a></p>
   <script type="text/javascript">
-    function changeUrl(){
+    function changeUrlParas(){
       //input code here to extract the searchbar
       document.getElementById('go').setAttribute('href',
                                                  'https://geraldcdx.github.io/ProjectGV/2ndPage?cinema=' + "GvVivoCity&movie=Tenet&timing=tues_13_Oct_2020_1730" );
