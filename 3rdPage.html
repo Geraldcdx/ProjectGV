@@ -26,7 +26,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular-route.min.js"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/pbkdf2.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64-min.js"></script>
@@ -659,7 +658,7 @@ if(lastpart_movie  === "6808"){
 <li class="col-md-3 col-sm-5 col-xs-6">
 <p>Cinemas:</p>
 <p class="ticket-content">
-<select class="form-control btn btn-default btn-sm dropdown-toggle ng-pristine ng-valid" aria-haspopup="true" aria-expanded="false" ng-model="selMovieCinema" ng-options="movCin.name for movCin in movieCinemas" ng-change="selectCinema(selMovieCinema)">
+  
   <script>
     //insert scripts here to add to the options
     var cinema;
@@ -741,10 +740,31 @@ if(lastpart_movie  === "6808"){
     }
     
   </script>
-<option value=""> Select a Cinema </option>
-  <option value="">GV Vivocity</option> <--!Add Value of Cinema!-->
-  <option value="">GV Plaza</option>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><!-- jQuery base library needed -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+  <select class="js-example-basic-single" name="state" >
+  <option value="AL">GV Vivocity</option>
+  <option value="WY">GV Plaza</option>
 </select>
+  <style>
+    .select2-search input{
+      color: black;
+    }
+    .select2-results { 
+      color:black;
+    }
+    
+  </style>
+  <script>
+    $(document).ready(function() {
+    $('.js-example-basic-single').select2({width:"100%"});
+    });
+  </script>
 </p>
 </li>
 <li class="col-md-3 col-sm-5 col-xs-6">
@@ -767,6 +787,7 @@ if(lastpart_movie  === "6808"){
   <option value="">2030</option>
 </select>
 </p>
+  
 </li>
 <li class="col-md-3 col-sm-5 col-xs-6">
 <p>&nbsp;</p>
@@ -794,7 +815,6 @@ if(lastpart_movie  === "6808"){
 </div>
 </div>
  <!-- Add the information for seating here !-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   
 <script>
   var numOfSeats = 0;
