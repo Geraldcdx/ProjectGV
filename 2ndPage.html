@@ -21,6 +21,14 @@
 <link media="print" href="https://www.gv.com.sg/media/cms/css/print.css?ver=1.0r472" type="text/css" rel="stylesheet">
 <!--[if lt IE 9]><link href="https://www.gv.com.sg/media/cms/css/style-ie8.css?ver=1.0r472" rel="stylesheet" media="screen"><![endif]-->
 <link media="screen, projection" href="https://www.gv.com.sg/media/cms/css/gvmc.css?ver=1.0r472" type="text/css" rel="stylesheet">
+<script>
+    window.magnoliaFrontendData = {themePath: "/resources/templating-kit/", contextPath: "", isEdit: false, texts: {lightbox: {close: "close lightbox", next: "next picture"},close: "close"}, cfg: {}};
+    <!--window.gv = {isEdit: false, isAuthor: false, isGVMC: false, staging: false}; BAD PATH!-->
+    function dwrite(n) {document.write(n);}function isHttps() {return window.location.protocol == 'https:';}function inUrl(n) {return window.location.href.indexOf(n) != -1;}
+    function https() {return (inUrl('/GVSeatSelection') || inUrl('/GVBuyTickets') || inUrl('/GVMCRegistration') || inUrl('/GVMovies') || inUrl('/GVMovieDetails')  || window.gv.isAuthor);}
+    if (!isHttps() && window.location.hostname == 'gv.com.sg') window.location = 'http://www.gv.com.sg';
+    if (!window.gv.staging && !window.gv.isAuthor && !isHttps() ) {window.location.href = 'https:' + window.location.href.substring(window.location.protocol.length);} #bad path
+</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular-route.min.js"></script>
@@ -617,7 +625,124 @@ tickets sold out.</p>
 <div class="loading" ng-show="isLoading==true">
 <br>
 <div class="row">
-<p style="text-align: center" class="help-inline alert alert-success">Need to add the theatre information</p>
+<p style="text-align: center" class="help-inline alert alert-success">Need </p>
+  <style>
+  table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+  </style>
+  <script>
+    //Create Table by accessing Url parameters
+    $( document ).ready(function() {
+        //var urlStr = window.location.href;
+      var urlStr = "https://geraldcdx.github.io/ProjectGV/2ndPage?cinema=GvVivoCity&movie=Tenet&timing=tues_13_Oct_2020_1730";
+      var url = new URL(urlStr);
+      var cinema = url.searchParams.get("cinema"); //function to retrieve the para
+      var movie = url.searchParams.get("movie"); //function to retrieve the para
+      var timing = url.searchParams.get("timing"); //function to retrieve the para
+      //alert(cinema); alert(timing);alert(movie);
+      var timingPara = timing.split("_");
+      var day = timingPara[0];
+      var dateDay = timingPara[1];
+      var dateMonth = timingPara[2];
+      var dateYear = timingPara[3];
+      var time = timingPara[4];
+      //alert(time);
+      //alert(findDay("su"));
+      //Add into the id = "dateRow" the variable for findDay and movie theatre TODO
+      //Table Headers
+      document.getElementById('dateRow').innerHTML = addHeaders(cinema, findDay("tue"));
+      //#timingrow
+      document.getElementById('timingRow').innerHTML = addTimings(movie, time);
+      
+    });
+    //function that changes the url para
+    function changeUrlParas(){
+      //input code here to extract the searchbar
+      document.getElementById('go').setAttribute('href',
+                                                 'https://geraldcdx.github.io/ProjectGV/2ndPage?cinema=' + 
+                                                 cinema +
+                                                 "&movie=" + movie 
+                                                 +"&timing=" + timing) ;
+    }
+    //transform 24hr to 12hr
+    function xform(time){
+      if (time>=1200) return time + "PM";
+      else return time + "AM";
+    }
+    //Function to make fake timings
+     function addTimings(movie, time) {
+       var str="";
+      var o = "<a id =\"go\"href=\"https://geraldcdx.github.io/ProjectGV/3rdPage\" class=\"btn btn-primary\">";
+      var c =  "</a>";
+       str += "<th>" + movie + "</th>";   
+       str += o + xform(time) + c;
+       str += o + "700PM" + c;
+       str += o + "930PM" + c;
+       return str;
+     }
+    //Function to add in table headers
+    function addHeaders(cinema, days){
+      var str="";
+      var o = "<th>";
+      var c = "</th>";
+      str += o + cinema + c;
+      str += o + "Today" + c;
+      var iter;
+      for (iter=1; iter<days.length;iter++) {
+        str += o + days[iter] + c;
+      }
+      
+      return str;
+    }
+    //Function that determines the information for the day and header for the first table
+    function findDay(vari){
+      var days = "Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday";
+      var daysInNumbers = days.split(",");
+      var reg = new RegExp(vari.toLowerCase());
+      var i;
+      for (i=0; i<daysInNumbers.length; i++){
+        var dateLower = daysInNumbers[i].toLowerCase();
+         if(reg.test(dateLower)){
+          return rearrangeDays(i, daysInNumbers);//contains the correct day
+         }
+      }
+    }
+    
+    function rearrangeDays(num, days){
+      var i;
+      var counter = 0;
+      var arr =[];
+      for (i=0;i<num;i++){
+        arr.push(days[i]);
+        counter++;
+      }
+      while (counter!=0){
+        days.shift();
+        counter--;
+      }
+      days = days.concat(arr);
+      return days;
+    }
+    
+  </script>
+    <table id="movieTable">
+      <tr id="dateRow">
+        </tr>
+      </table>
+  <table>
+      <tr id="timingRow">
+      </tr>
+  </table>
+  
 </div>
 <br>
 </div>
