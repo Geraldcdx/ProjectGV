@@ -640,14 +640,17 @@ td, th {
 }
   </style>
   <script>
+    var cinema;
+    var movie;
+    var timing;
     //Create Table by accessing Url parameters
     $( document ).ready(function() {
         //var urlStr = window.location.href;
       var urlStr = "https://geraldcdx.github.io/ProjectGV/2ndPage?cinema=GvVivoCity&movie=Tenet&timing=tues_13_Oct_2020_1730";
       var url = new URL(urlStr);
-      var cinema = url.searchParams.get("cinema"); //function to retrieve the para
-      var movie = url.searchParams.get("movie"); //function to retrieve the para
-      var timing = url.searchParams.get("timing"); //function to retrieve the para
+      cinema = url.searchParams.get("cinema"); //function to retrieve the para
+      movie = url.searchParams.get("movie"); //function to retrieve the para
+      timing = url.searchParams.get("timing"); //function to retrieve the para
       //alert(cinema); alert(timing);alert(movie);
       var timingPara = timing.split("_");
       var day = timingPara[0];
@@ -664,29 +667,33 @@ td, th {
       document.getElementById('timingRow').innerHTML = addTimings(movie, time);
       
     });
-    //function that changes the url para
+    //function to route
     function changeUrlParas(){
       //input code here to extract the searchbar
       document.getElementById('go').setAttribute('href',
-                                                 'https://geraldcdx.github.io/ProjectGV/2ndPage?cinema=' + 
-                                                 cinema +
-                                                 "&movie=" + movie 
-                                                 +"&timing=" + timing) ;
+                                                 'https://geraldcdx.github.io/ProjectGV/3rdPage?cinema=' 
+                                                 + cinema + "&movie=" + movie + "&timing=" + timing
+                                                );  
     }
-    //transform 24hr to 12hr
+    
+    //convert 24hr to 12hr
     function xform(time){
-      if (time>=1200) return time + "PM";
-      else return time + "AM";
+      if (time>=1200) {
+        if(time>=1300) time -= 1200;
+        time+= "PM";
+      }
+      else time += "AM";
+      return time;
     }
     //Function to make fake timings
      function addTimings(movie, time) {
        var str="";
-      var o = "<a id =\"go\"href=\"https://geraldcdx.github.io/ProjectGV/3rdPage\" class=\"btn btn-primary\">";
-      var c =  "</a>";
-       str += "<th>" + movie + "</th>";   
-       str += o + xform(time) + c;
+      var o = "<a id= \"go\" onclick = \"return changeUrlParas()\" href=\"\"  class=\"btn btn-primary\"></button>";
+      var c = "</a>";
+       str+= "<th>" + movie + "</th>";
+       str+= o +xform(time)+c;
        str += o + "700PM" + c;
-       str += o + "930PM" + c;
+       str += o + "930PM"+ c;
        return str;
      }
     //Function to add in table headers
@@ -737,7 +744,7 @@ td, th {
     <table id="movieTable">
       <tr id="dateRow">
         </tr>
-      </table>
+  </table>
   <table>
       <tr id="timingRow">
       </tr>
