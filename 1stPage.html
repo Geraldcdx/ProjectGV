@@ -324,7 +324,8 @@ Purchase
 </select>
 <div class="clearfix"></div>
 </div>
-<p class="button-section text-center"><a href="javascript:void(0);" class="btn btn-default" role="button" ng-click="resetQckSeachMov()">Reset</a><a href="javascript:void(0);" class="btn btn-primary" role="button" ng-click="qckSeachMov()">Go</a></p>
+<p class="button-section text-center"><a href="javascript:void(0);" class="btn btn-default" role="button" ng-click="resetQckSeachMov()">Reset</a>
+  <a href="https://geraldcdx.github.io/ProjectGV/2ndPage" class="btn btn-primary" role="button">Go</a></p>
 </form>
 </div>
 </div>
@@ -366,7 +367,7 @@ Purchase
 </div>
 </div>
 
-  <h1 style= "color:black">TODO: animate the dropdownlists and change add search button</h1>
+  <h1 style= "color:black">There needs to be some work to put a big picture and float the quick buy above this thing</h1>
 
 </div>
 <a class="gcart-wrapper move ng-hide" ng-click="toggleShoppingCart()" ng-show="isMerchPage == true"><span class="gcart" ng-bind-html="cartInfoCtr">&nbsp;</span></a>
@@ -728,7 +729,16 @@ document.getElementById("hover_bkgr_fricc").setAttribute("style", "display:none"
 </span>
 </button>
 </div>
-<p class="button-section text-center"><a href="javascript:void(0);" class="btn btn-third" role="button" ng-click="resetQckSeachMov()">Reset</a><a href="javascript:void(0);" class="btn btn-primary" role="button" ng-click="qckSeachMov()">Go</a></p>
+<p class="button-section text-center"><a href="javascript:void(0);" class="btn btn-third" role="button" ng-click="resetQckSeachMov()">Reset</a>
+  <a id = "go" onclick ="return changeUrl();" href="https://geraldcdx.github.io/ProjectGV/2ndPage?cinema=x?movie=y?timing=z" class="btn btn-primary" role="button" ng-click="qckSeachMov()">Go</a></p>
+  <script type="text/javascript">
+    function changeUrl(){
+      
+      document.getElementById('go').setAttribute('href',
+                                                 'https://geraldcdx.github.io/ProjectGV/2ndPage?cinema=' + "test1?movie=test2?timing=test3" );
+    }
+    
+    </script>
 </form>
 </div>
 </div>
