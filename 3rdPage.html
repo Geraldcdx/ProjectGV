@@ -660,6 +660,87 @@ if(lastpart_movie  === "6808"){
 <p>Cinemas:</p>
 <p class="ticket-content">
 <select class="form-control btn btn-default btn-sm dropdown-toggle ng-pristine ng-valid" aria-haspopup="true" aria-expanded="false" ng-model="selMovieCinema" ng-options="movCin.name for movCin in movieCinemas" ng-change="selectCinema(selMovieCinema)">
+  <script>
+    //insert scripts here to add to the options
+    var cinema;
+    var movie;
+    var timing;
+    var time;
+    $( document ).ready(function() {
+      //var urlStr = window.location.href;
+      var urlStr = "https://geraldcdx.github.io/ProjectGV/2ndPage?cinema=GvVivoCity&movie=Tenet&timing=tues_13_Oct_2020_1730";
+      var url = new URL(urlStr);
+      cinema = url.searchParams.get("cinema"); //function to retrieve the para
+      movie = url.searchParams.get("movie"); //function to retrieve the para
+      timing = url.searchParams.get("timing"); //function to retrieve the para
+      //alert(cinema); alert(timing);alert(movie);
+      var timingPara = timing.split("_");
+      var day = timingPara[0];
+      var dateDay = timingPara[1];
+      var dateMonth = timingPara[2];
+      var dateYear = timingPara[3];
+      time = timingPara[4];
+      //Script to populate the time
+      document.getElementById('datePC').innerHTML = findDay(day)[0] + ", " + convertDay(dateDay) + " " + convertMonth(dateMonth)  ;
+      document.getElementById('timePC').innerHTML = xform(time);
+    //Script to populate the date
+    });
+    function convertMonth(month){
+      var str = "January,February,March,April,May,June,July,August,September,October,November,December";
+      var arr = str.split(",");
+      var i;
+      var reg = new RegExp(month.toLowerCase());
+      for (i=0; i<arr.length;i++){
+        var monthLower = arr[i].toLowerCase();
+        if(reg.test(monthLower)){
+          return arr[i];
+        }
+      }
+    }
+    function xform(time){
+      if (time>=1200) {
+        if(time>=1300) time -= 1200;
+        time+= "PM";
+      }
+      else time += "AM";
+      return time;
+    }
+    function convertDay(day){
+      if(day%10 ==1 ) return day + "st";
+      if (day%10 ==2) return day + "nd";
+      if(day%10 ==3) return day + "rd";
+      else return day + "th";
+    }
+    function rearrangeDays(num, days){
+      var i;
+      var counter = 0;
+      var arr =[];
+      for (i=0;i<num;i++){
+        arr.push(days[i]);
+        counter++;
+      }
+      while (counter!=0){
+        days.shift();
+        counter--;
+      }
+      days = days.concat(arr);
+      return days;
+    }
+    //Function that determines the information for the day and header for the first table
+    function findDay(vari){
+      var days = "Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday";
+      var daysInNumbers = days.split(",");
+      var reg = new RegExp(vari.toLowerCase());
+      var i;
+      for (i=0; i<daysInNumbers.length; i++){
+        var dateLower = daysInNumbers[i].toLowerCase();
+         if(reg.test(dateLower)){
+          return rearrangeDays(i, daysInNumbers);//contains the correct day
+         }
+      }
+    }
+    
+  </script>
 <option value=""> Select a Cinema </option>
   <option value="">GV Vivocity</option> <--!Add Value of Cinema!-->
   <option value="">GV Plaza</option>
@@ -670,7 +751,7 @@ if(lastpart_movie  === "6808"){
 <p>Date:</p>
 <p class="ticket-content">
 <select class="form-control btn btn-default btn-sm dropdown-toggle ng-pristine ng-valid" aria-haspopup="true" aria-expanded="false" ng-model="selMovieDate" ng-options="movDate.convertedDate for movDate in selMovieCinema.dates" ng-change="selectMovieDate(selMovieDate)">
-<option value="">Select Date</option>
+<option id = "datePC"value="">Select Date</option>
   <option value="">Today</option>
   <option value="">Tomorrow</option>
 </select>
@@ -680,7 +761,7 @@ if(lastpart_movie  === "6808"){
 <p>Time:</p>
 <p class="ticket-content">
 <select class="form-control btn btn-default btn-sm dropdown-toggle ng-pristine ng-valid" aria-haspopup="true" aria-expanded="false" ng-model="selMovieTime" ng-options="movTime.convertedTime for movTime in selMovieDate.times" ng-change="selectMovieTime(selMovieTime)">
-<option value="">Select Time</option>
+<option id = "timePC" value="">Select Time</option>
   <option value="">1430</option>
   <option value="">1830</option>
   <option value="">2030</option>
