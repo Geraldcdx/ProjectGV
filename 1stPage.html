@@ -366,9 +366,7 @@ Purchase
 </form>
 </div>
 </div>
-
-  <h1 style= "color:black"></h1>
-
+<!--!-->
 </div>
 <a class="gcart-wrapper move ng-hide" ng-click="toggleShoppingCart()" ng-show="isMerchPage == true"><span class="gcart" ng-bind-html="cartInfoCtr">&nbsp;</span></a>
 <div class="modal-dialog sc-dialog ng-hide" role="document" ng-show="showShoppingCart == true" style="position:absolute;">
@@ -592,7 +590,7 @@ Purchase
 </script>
 <style>
 .hover_bkgr_fricc{
-    background:rgba(0,0,0,.4);
+    background:black;
     cursor:pointer;
     height:100%;
     position:fixed;
@@ -608,7 +606,7 @@ Purchase
     vertical-align:middle;
 }
 .hover_bkgr_fricc > div {
-    background-color: #000;
+    background-color: black;
     box-shadow: 10px 10px 60px #555;
     display: inline-block;
     height: auto;
@@ -619,7 +617,7 @@ Purchase
     border-radius: 8px;  
 }
 .popupCloseButton {
-    background-color: #000;
+    background-color: black;
     border: 3px solid #000;
     border-radius: 50px;
     cursor: pointer;
@@ -671,7 +669,7 @@ document.getElementById("hover_bkgr_fricc").setAttribute("style", "display:none"
   position: relative;
   top: 0;
   left: 0;
-  border: 1px red solid;
+  
 }
 .image2 {
   position: absolute;
@@ -681,9 +679,9 @@ document.getElementById("hover_bkgr_fricc").setAttribute("style", "display:none"
 </style>
     <div>
       <div class="parent">
-  <img class="image1" src="https://media.gv.com.sg/Booking/movies/images/load/bigimage/moviestay.jpg" />
+  <img class="image1"src="https://media.gv.com.sg/Booking/movies/images/load/bigimage/moviestay.jpg" />
         <div class="image2">
-          <div class=""style="max-width:1000px;"><!---Change the width here-!-->
+          <div class=""style="max-width:870px;"><!---Change the width here-!-->
 <div class="booking-details">
            <ul class="row list-unstyled booking-details-ct" style="width:1000px;">
 <li class="col-md-3 col-sm-5 col-xs-6">
@@ -735,7 +733,7 @@ document.getElementById("hover_bkgr_fricc").setAttribute("style", "display:none"
   <option value="">2030</option>
 </select>
 </p>
-</li>
+</li>  
 <li class="col-md-3 col-sm-5 col-xs-6">
 <p>&nbsp;</p>
 <p><a id = "go" onclick ="return changeUrl();" href="https://geraldcdx.github.io/ProjectGV/2ndPage?cinema=x?movie=y?timing=z" class="btn btn-primary" role="button" ng-click="qckSeachMov()">Go</a></p> 
