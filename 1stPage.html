@@ -656,10 +656,105 @@ document.getElementById("hover_bkgr_fricc").setAttribute("style", "display:none"
 <div ng-controller="GVHomeCntl">
 
 <div id="mainSlideShow" class="slideshow big-slideshow">
-<carousel interval="myInterval" id="carousel-example-generic">
+<!--<carousel interval="myInterval" id="carousel-example-generic">
 <img ng-src="https://media.gv.com.sg/Booking/movies/images/load/bigimage/moviestay.jpg"> <!--Add background image!-->
-</carousel>
-<div class="carousel-inner-panel row">
+  
+<!--</carousel>--!-->
+  <img ng-src=""> <!--Add background image!-->
+  <style>
+.parent {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+.image1 {
+  position: relative;
+  top: 0;
+  left: 0;
+  border: 1px red solid;
+}
+.image2 {
+  position: absolute;
+  top: 30px;
+  left: 300px;
+}
+</style>
+    <div>
+      <div class="parent">
+  <img class="image1" src="https://media.gv.com.sg/Booking/movies/images/load/bigimage/moviestay.jpg" />
+        <div class="image2">
+          <div class=""style="max-width:1000px;"><!---Change the width here-!-->
+<div class="booking-details">
+           <ul class="row list-unstyled booking-details-ct" style="width:1000px;">
+<li class="col-md-3 col-sm-5 col-xs-6">
+<p>Cinemas:</p>
+<p class="ticket-content">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><!-- jQuery base library needed -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+  <select class="js-example-basic-single" name="state" >
+  <option value="AL">GV Vivocity</option>
+  <option value="WY">GV Plaza</option>
+</select>
+  <style>
+    .select2-search input{
+      color: black;
+    }
+    .select2-results { 
+      color:black;
+    }
+    
+  </style>
+  <script>
+    $(document).ready(function() {
+    $('.js-example-basic-single').select2({width:"100%"});
+    });
+  </script>
+</p>
+</li>
+<li class="col-md-3 col-sm-5 col-xs-6">
+<p>Date:</p>
+<p class="ticket-content">
+<select class="form-control btn btn-default btn-sm dropdown-toggle ng-pristine ng-valid" aria-haspopup="true" aria-expanded="false" ng-model="selMovieDate" ng-options="movDate.convertedDate for movDate in selMovieCinema.dates" ng-change="selectMovieDate(selMovieDate)">
+<option id = "datePC"value="">Select Date</option>
+  <option value="">Today</option>
+  <option value="">Tomorrow</option>
+</select>
+</p>
+</li>
+<li class="col-md-3 col-sm-5 col-xs-6">
+<p>Time:</p>
+<p class="ticket-content">
+<select class="form-control btn btn-default btn-sm dropdown-toggle ng-pristine ng-valid" aria-haspopup="true" aria-expanded="false" ng-model="selMovieTime" ng-options="movTime.convertedTime for movTime in selMovieDate.times" ng-change="selectMovieTime(selMovieTime)">
+<option id = "timePC" value="">Select Time</option>
+  <option value="">1430</option>
+  <option value="">1830</option>
+  <option value="">2030</option>
+</select>
+</p>
+</li>
+<li class="col-md-3 col-sm-5 col-xs-6">
+<p>&nbsp;</p>
+<p><a id = "go" onclick ="return changeUrl();" href="https://geraldcdx.github.io/ProjectGV/2ndPage?cinema=x?movie=y?timing=z" class="btn btn-primary" role="button" ng-click="qckSeachMov()">Go</a></p> 
+  <script type="text/javascript">
+    function changeUrl(){
+      //input code here to extract the searchbar
+      document.getElementById('go').setAttribute('href',
+                                                 'https://geraldcdx.github.io/ProjectGV/2ndPage?cinema=' + "GvVivoCity&movie=Tenet&timing=tues_13_Oct_2020_1730" );
+    }
+    
+    </script>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!--DISABLE<div class="carousel-inner-panel row">
+  
 <div class="movie-search hidden-xs">
 <tabset id='buyTixTab' justified="true" ng-cloak>
 <tab heading="Quick Buy" class="tab-content">
@@ -730,9 +825,9 @@ document.getElementById("hover_bkgr_fricc").setAttribute("style", "display:none"
 </button>
 </div>
 <p class="button-section text-center"><a href="javascript:void(0);" class="btn btn-third" role="button" ng-click="resetQckSeachMov()">Reset</a>
-  <a id = "go" onclick ="return changeUrlParas();" href="https://geraldcdx.github.io/ProjectGV/2ndPage?cinema=x?movie=y?timing=z" class="btn btn-primary" role="button" ng-click="qckSeachMov()">Go</a></p>
+  <a id = "go" onclick ="return changeUrl();" href="https://geraldcdx.github.io/ProjectGV/2ndPage?cinema=x?movie=y?timing=z" class="btn btn-primary" role="button" ng-click="qckSeachMov()">Go</a></p>
   <script type="text/javascript">
-    function changeUrlParas(){
+    function changeUrl(){
       //input code here to extract the searchbar
       document.getElementById('go').setAttribute('href',
                                                  'https://geraldcdx.github.io/ProjectGV/2ndPage?cinema=' + "GvVivoCity&movie=Tenet&timing=tues_13_Oct_2020_1730" );
@@ -744,6 +839,7 @@ document.getElementById("hover_bkgr_fricc").setAttribute("style", "display:none"
 </div>
 </div>
 </tab>
+--!-->
 <tab heading="Check Purchase" class="tab-content" select="BuyTixMenuToggle()">
 <div class="background"></div>
 <div class="foreground">
