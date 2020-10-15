@@ -681,6 +681,8 @@ if(lastpart_movie  === "6808"){
       document.getElementById('datePC').innerHTML = findDay(day)[0] + ", " + convertDay(dateDay) + " " + convertMonth(dateMonth)  ;
       document.getElementById('timePC').innerHTML = xform(time);
     //Script to populate the date
+      $('.js-example-basic-single').select2({width:"100%"});
+      document.getElementById('cinemaOptions').innerHTML = addCinema();
     });
     function convertMonth(month){
       var str = "January,February,March,April,May,June,July,August,September,October,November,December";
@@ -763,8 +765,7 @@ if(lastpart_movie  === "6808"){
   </style>
   <script>
     $(document).ready(function() {
-    $('.js-example-basic-single').select2({width:"100%"});
-      document.getElementById('cinemaOptions').innerHTML = addCinema();
+    
     });
     function addCinema(){
       var str = cinema;
