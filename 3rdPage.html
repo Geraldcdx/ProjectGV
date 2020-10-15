@@ -654,10 +654,8 @@ if(lastpart_movie  === "6808"){
 <p ng-if="selMovieTime.midnight"><span class="normal-text">You Have Selected</span><span class="movie-name">{{selMovie.filmTitle}}</span> on <span ng-bind-html="midNightDisplayMsg"></span><p>
 </div>
 <div ng-show="(selMovieDate == null || selMovieTime == null || selMovieCinema == null) && submittedViewSeatPlan" class="help-inline alert alert-danger">All fields are required.</div>
-<ul class="row list-unstyled booking-details-ct">
-<li class="col-md-3 col-sm-5 col-xs-6">
-<p>Cinemas:</p>
-<p class="ticket-content">
+
+
   
   <script>
     //insert scripts here to add to the options
@@ -740,14 +738,17 @@ if(lastpart_movie  === "6808"){
     }
     
   </script>
-
+  <ul class="row list-unstyled booking-details-ct">
+<li class="col-md-3 col-sm-5 col-xs-6">
+<p>Cinemas:</p>
+<p class="ticket-content">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><!-- jQuery base library needed -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-  <select class="js-example-basic-single" name="state" >
+  <select id="cinemaOptions" class="js-example-basic-single" name="state" >
   <option value="AL">GV Vivocity</option>
   <option value="WY">GV Plaza</option>
 </select>
@@ -763,7 +764,17 @@ if(lastpart_movie  === "6808"){
   <script>
     $(document).ready(function() {
     $('.js-example-basic-single').select2({width:"100%"});
+      document.getElementById('cinemaOptions').innerHTML = addCinema();
     });
+    function addCinema(){
+      var str = cinema;
+      str += "-Gold Class Express Funan-Gold Class Suntec City-Gold Class VivoCity-Gold Class Grand, Great World City-Deluxe Plus,Funan-Duo Deluxe,Paya Labar-DBOX, Bishan-GVmax, VivoCity-Gemini Funan-Gemini City Square-Gemini Grand, Great World City-Grand Seats, Great World City-GV Funan-GV Bedok-GV Paya Lebar-GV Tiong Bahru-GV Suntec City-GV VivoCity-GV Plaza-GV Tampines-GV Jurong Point- GV Bishan-GV Tampines-GV Jurong Point-GV Bishan-GV City Square-GV Grand, Great World City-GV Yishun-GVmax Dolby Atmos, VivoCity-Auro 11.1 by Barco, GV Suntec City-GV @ Capitol (Stall: Level 1)-GV @ Capitol (Dress: Level 3)-GV @ Capitol (Upper Circle: Level 4)";
+      var splitStr = str.toString().split("-");
+      var i;
+      for (i=0;i<splitStr.length;i++)
+        if(splitStr[i] != cinema) str += "<option>" + splitStr[i] + "</option>";      
+      return str;
+    }
   </script>
 </p>
 </li>
