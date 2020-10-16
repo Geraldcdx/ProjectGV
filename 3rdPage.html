@@ -662,85 +662,66 @@ if(lastpart_movie  === "6808"){
     var cinema;
     var movie;
     var timing;
+    var day;
+    var month;
     var time;
     $( document ).ready(function() {
       //var urlStr = window.location.href;
-      var urlStr = "https://geraldcdx.github.io/ProjectGV/2ndPage?cinema=GvVivoCity&movie=Tenet&timing=tues_13_Oct_2020_1730";
+      var urlStr = "https://geraldcdx.github.io/ProjectGV/3ndPage?cinema=GV_VivoCity&movie=Tenet&timing=30th_Nov_330pm_2020";
       var url = new URL(urlStr);
       cinema = url.searchParams.get("cinema"); //function to retrieve the para
       movie = url.searchParams.get("movie"); //function to retrieve the para
       timing = url.searchParams.get("timing"); //function to retrieve the para
       //alert(cinema); alert(timing);alert(movie);
       var timingPara = timing.split("_");
-      var day = timingPara[0];
-      var dateDay = timingPara[1];
-      var dateMonth = timingPara[2];
+      day = timingPara[0];
+      month = timingPara[1];
+      time = timingPara[2];
       var dateYear = timingPara[3];
-      time = timingPara[4];
-      //Script to populate the time
-      document.getElementById('datePC').innerHTML = findDay(day)[0] + ", " + convertDay(dateDay) + " " + convertMonth(dateMonth)  ;
-      document.getElementById('timePC').innerHTML = xform(time);
     //Script to populate the date
-      $('.js-example-basic-single').select2({width:"100%"});
+      $('.js-example-basic-single').select2({width:"100%", placeholder: 'Select an option'});
       document.getElementById('cinemaOptions').innerHTML = addCinema();
+      document.getElementById('datePC').innerHTML = addDate();
+      document.getElementById('timePC').innerHTML = addTime();
+      changeS();   
+      //js-example-basic-single
+      
     });
-    function convertMonth(month){
-      var str = "January,February,March,April,May,June,July,August,September,October,November,December";
-      var arr = str.split(",");
+    function changeS(){
+      var timeField = document.getElementById("timePC");
+      var dateField = document.getElementById("datePC");
+      var cinemaField = document.getElementById("cinemaOptions");
+      //movie cinema day month time
+      var dayNmonth = day + " " + month;
+      var arr = [subSpaces(cinema), dayNmonth, time];
+      var arrFields = [cinemaField, dateField, timeField];
       var i;
-      var reg = new RegExp(month.toLowerCase());
-      for (i=0; i<arr.length;i++){
-        var monthLower = arr[i].toLowerCase();
-        if(reg.test(monthLower)){
-          return arr[i];
-        }
+      //alert(arrFields[0][1].value);
+      for(i=0;i<arr.length;i++){//brings that arr and arrFields together
+        var j;
+        for(j=0;j<arrFields[i].length;j++){ //checks individual Fields
+          if (arrFields[i][j].value == arr[i]){
+            arrFields[i].selectedIndex = j;
+            break;
+          }
+          
+        } 
       }
+      //alert(arr);
+      //alert(time.length);
     }
-    function xform(time){
-      if (time>=1200) {
-        if(time>=1300) time -= 1200;
-        time+= "PM";
-      }
-      else time += "AM";
-      return time;
-    }
-    function convertDay(day){
-      if(day%10 ==1 ) return day + "st";
-      if (day%10 ==2) return day + "nd";
-      if(day%10 ==3) return day + "rd";
-      else return day + "th";
-    }
-    function rearrangeDays(num, days){
-      var i;
-      var counter = 0;
-      var arr =[];
-      for (i=0;i<num;i++){
-        arr.push(days[i]);
-        counter++;
-      }
-      while (counter!=0){
-        days.shift();
-        counter--;
-      }
-      days = days.concat(arr);
-      return days;
-    }
-    //Function that determines the information for the day and header for the first table
-    function findDay(vari){
-      var days = "Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday";
-      var daysInNumbers = days.split(",");
-      var reg = new RegExp(vari.toLowerCase());
-      var i;
-      for (i=0; i<daysInNumbers.length; i++){
-        var dateLower = daysInNumbers[i].toLowerCase();
-         if(reg.test(dateLower)){
-          return rearrangeDays(i, daysInNumbers);//contains the correct day
-         }
-      }
+    function subSpaces(str){
+      var split= str.split("_");
+      return split.join(" ");
     }
     
+    
+    
+    
+ 
+    
   </script>
-  <ul class="row list-unstyled booking-details-ct">
+ <ul class="row list-unstyled booking-details-ct">
 <li class="col-md-3 col-sm-5 col-xs-6">
 <p>Cinemas:</p>
 <p class="ticket-content">
@@ -750,7 +731,7 @@ if(lastpart_movie  === "6808"){
   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><!-- jQuery base library needed -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-  <select id="cinemaOptions" class="js-example-basic-single" name="state" >
+  <select id = "cinemaOptions" class="js-example-basic-single" name="state" >
   <option value="AL">GV Vivocity</option>
   <option value="WY">GV Plaza</option>
 </select>
@@ -765,25 +746,52 @@ if(lastpart_movie  === "6808"){
   </style>
   <script>
     $(document).ready(function() {
-    
+      
+      
     });
+    
     function addCinema(){
-      var str = cinema;
-      str += "-Gold Class Express Funan-Gold Class Suntec City-Gold Class VivoCity-Gold Class Grand, Great World City-Deluxe Plus,Funan-Duo Deluxe,Paya Labar-DBOX, Bishan-GVmax, VivoCity-Gemini Funan-Gemini City Square-Gemini Grand, Great World City-Grand Seats, Great World City-GV Funan-GV Bedok-GV Paya Lebar-GV Tiong Bahru-GV Suntec City-GV VivoCity-GV Plaza-GV Tampines-GV Jurong Point- GV Bishan-GV Tampines-GV Jurong Point-GV Bishan-GV City Square-GV Grand, Great World City-GV Yishun-GVmax Dolby Atmos, VivoCity-Auro 11.1 by Barco, GV Suntec City-GV @ Capitol (Stall: Level 1)-GV @ Capitol (Dress: Level 3)-GV @ Capitol (Upper Circle: Level 4)";
+      var str = "" + cinema + "-";
+      var returnStr="";
+      str += "Gold Class Express Funan-Gold Class Suntec City-Gold Class VivoCity-Gold Class Grand, Great World City-Deluxe Plus,Funan-Duo Deluxe,Paya Labar-DBOX, Bishan-GVmax, VivoCity-Gemini Funan-Gemini City Square-Gemini Grand, Great World City-Grand Seats, Great World City-GV Funan-GV Bedok-GV Paya Lebar-GV Tiong Bahru-GV Suntec City-GV VivoCity-GV Plaza-GV Tampines-GV Jurong Point- GV Bishan-GV Tampines-GV Jurong Point-GV Bishan-GV City Square-GV Grand, Great World City-GV Yishun-GVmax Dolby Atmos, VivoCity-Auro 11.1 by Barco, GV Suntec City-GV @ Capitol (Stall: Level 1)-GV @ Capitol (Dress: Level 3)-GV @ Capitol (Upper Circle: Level 4)";
       var splitStr = str.toString().split("-");
       var i;
       for (i=0;i<splitStr.length;i++)
-        if(splitStr[i] != cinema) str += "<option>" + splitStr[i] + "</option>";      
-      return str;
+      returnStr += "<option>" + splitStr[i] + "</option>";       
+      return returnStr;
     }
+    
+    function addDate(){
+      var str = "";
+      var rStr = "";
+      str += "Select Date,30th Nov, 1st Dec";
+      var splitStr = str.toString().split(",");
+      var i;
+      for (i=0;i<splitStr.length;i++){
+          rStr += "<option>" + splitStr[i] + "</option>";        
+      }
+      return rStr;
+    }
+    function addTime(){
+      var str = "";
+      var rStr = "";
+      str += "Select Time,1pm,330pm,5pm,830pm";
+      var splitStr = str.toString().split(",");
+      var i;
+      for (i=0;i<splitStr.length;i++){
+          rStr += "<option>" + splitStr[i] + "</option>";        
+      }
+      return rStr;
+    }
+    
   </script>
 </p>
 </li>
 <li class="col-md-3 col-sm-5 col-xs-6">
 <p>Date:</p>
 <p class="ticket-content">
-<select class="form-control btn btn-default btn-sm dropdown-toggle ng-pristine ng-valid" aria-haspopup="true" aria-expanded="false" ng-model="selMovieDate" ng-options="movDate.convertedDate for movDate in selMovieCinema.dates" ng-change="selectMovieDate(selMovieDate)">
-<option id = "datePC"value="">Select Date</option>
+<select  id = "datePC" class="form-control btn btn-default btn-sm">
+<option value="">Select Date</option>
   <option value="">Today</option>
   <option value="">Tomorrow</option>
 </select>
@@ -792,8 +800,8 @@ if(lastpart_movie  === "6808"){
 <li class="col-md-3 col-sm-5 col-xs-6">
 <p>Time:</p>
 <p class="ticket-content">
-<select class="form-control btn btn-default btn-sm dropdown-toggle ng-pristine ng-valid" aria-haspopup="true" aria-expanded="false" ng-model="selMovieTime" ng-options="movTime.convertedTime for movTime in selMovieDate.times" ng-change="selectMovieTime(selMovieTime)">
-<option id = "timePC" value="">Select Time</option>
+<select id = "timePC" class="form-control btn btn-default btn-sm">
+<option  value="">Select Time</option>
   <option value="">1430</option>
   <option value="">1830</option>
   <option value="">2030</option>
