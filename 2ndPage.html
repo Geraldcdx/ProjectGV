@@ -610,8 +610,7 @@ Purchase
 <div class="notice-print">
 <div class="row">
 <div class="col-md-9 col-sm-9 col-xs-12 col-pg-zero">
-<p>Please click on your preferred show time or select a date. Show times in grey indicates that
-tickets sold out.</p>
+<p>Please click on your preferred show time or select a date.</p>
 </div>
 <div class="col-md-3 col-sm-3 col-xs-12 col-pg-zero">
 <button class="btn btn-forth btn-sm" onclick="printDiv('print-area')">
@@ -627,16 +626,23 @@ tickets sold out.</p>
 <div class="row">
 <p style="text-align: center" class="help-inline alert alert-success">Details </p>
   <style>
-  table {
+  .table1 {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 100%;
+  width: 80%;
+}
+  .table2 {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 123%;
 }
 
 td, th {
-  border: 1px solid #dddddd;
+  border-style: solid ;
+  border-color: black;
+  border-width: 5px;
   text-align: left;
-  padding: 8px;
+  padding: 10px;
 }
   </style>
   <script>
@@ -681,6 +687,7 @@ td, th {
       var dateYear = timingPara[3];
       var newStr= date +"_"+ dateMonth+"_" + id+"_" + dateYear;
       var str = "https://geraldcdx.github.io/ProjectGV/3rdPage?cinema=" + cinema + "&movie=" + movie + "&timing=" + newStr;
+      alert(str);
       document.getElementById(id).setAttribute('href', str );   
     }
     
@@ -689,14 +696,14 @@ td, th {
        var str="";
        var timing = ["1pm", "330pm", "5pm", "830pm"];
       var c = "</a>";
-       str+= "<th>" + movie + "</th>";
+       str+= "<th style=\"background-color: #262626\">" + movie + "</th><th style=\"background-color: #404040\">";
        var i;
        for (i=0; i<timing.length;i++){
          str += "<a id= \""+ timing[i] +  "\" onclick = \"return changeUrlParas(this.id)\" href=\"\"  class=\"btn btn-primary timingBtn\"></button>"
-           + timing[i] + c;
+           + timing[i] + c +"&nbsp;&nbsp;";
          //alert(str);
        }
-       return str;
+       return str +"</th>";
      }
     //Function to add in table headers
     function addHeaders(cinema, day, month){
@@ -704,10 +711,10 @@ td, th {
       //alert(check);
       var days = [ "30th Nov", "1st Dec"," 2nd Dec","3rd Dec", "4th Dec"];
       var str="";
-      var o = "<th>";
+      var o = "<th style=\"background-color: #404040\">";
       var c = "</th>";
-      str += o + cinema + c;
-      str += o + "Today" + c;
+      str += "<th>" + cinema + c;
+      str += "<th style=\"background-color: 	#FFD700\">" + "Today" + c;
       var iter;
       for (iter=1; iter<days.length;iter++) {
         str += o + days[iter] + c;
@@ -716,13 +723,11 @@ td, th {
       return str;
     }    
   </script>
-    <table id="movieTable">
-      <tr id="dateRow">
-        </tr>
+   <table class="table1" id="movieTable">
+      <tr id="dateRow"></tr>
   </table>
-  <table>
-      <tr id="timingRow">
-      </tr>
+  <table class="table2">
+      <tr  id="timingRow" ></tr>
   </table>
   
 </div>
