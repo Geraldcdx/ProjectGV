@@ -1,1 +1,941 @@
 
+
+<!DOCTYPE html>
+<html xml:lang="en" lang="en" class="no-js">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="all" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<meta property="fb:app_id" content="492913240911783" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.gv.com.sg" />
+<meta property="og:image" content="https://media.gv.com.sg/cms/resources/templating-kit/themes/gv/images/gg-img.jpg" />
+<meta property="og:title" content="Golden Village - Buy Movie Tickets" />
+<meta property="og:description" content="" />
+<title>Golden Village - Buy Movie Tickets</title>
+<link rel="shortcut icon" type="image/ico" href="/dam/jcr:cbe5da8d-e0bf-44aa-ac3c-916610d88a61/gv32x32.ico" />
+<link media="screen, projection" href="https://www.gv.com.sg/media/cms/css/emojionearea.min.css?ver=1.0r472" type="text/css" rel="stylesheet">
+<link media="screen, projection" href="https://www.gv.com.sg/media/cms/css/style.css?ver=1.0r472" type="text/css" rel="stylesheet">
+<link media="print" href="https://www.gv.com.sg/media/cms/css/print.css?ver=1.0r472" type="text/css" rel="stylesheet">
+<!--[if lt IE 9]><link href="https://www.gv.com.sg/media/cms/css/style-ie8.css?ver=1.0r472" rel="stylesheet" media="screen"><![endif]-->
+<link media="screen, projection" href="https://www.gv.com.sg/media/cms/css/gvmc.css?ver=1.0r472" type="text/css" rel="stylesheet">
+<script>
+    window.magnoliaFrontendData = {themePath: "/resources/templating-kit/", contextPath: "", isEdit: false, texts: {lightbox: {close: "close lightbox", next: "next picture"},close: "close"}, cfg: {}};
+    <!--window.gv = {isEdit: false, isAuthor: false, isGVMC: false, staging: false}; BAD PATH!-->
+    function dwrite(n) {document.write(n);}function isHttps() {return window.location.protocol == 'https:';}function inUrl(n) {return window.location.href.indexOf(n) != -1;}
+    function https() {return (inUrl('/GVSeatSelection') || inUrl('/GVBuyTickets') || inUrl('/GVMCRegistration') || inUrl('/GVMovies') || inUrl('/GVMovieDetails')  || window.gv.isAuthor);}
+    if (!isHttps() && window.location.hostname == 'gv.com.sg') window.location = 'http://www.gv.com.sg';
+    if (!window.gv.staging && !window.gv.isAuthor && !isHttps() ) {window.location.href = 'https:' + window.location.href.substring(window.location.protocol.length);} #bad path
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular-route.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/pbkdf2.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/mode-ecb-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/sha256-min.js"></script>
+<script>
+    var gvMedia = 'https://www.gv.com.sg/media';
+    function wscript(n) {dwrite('<script src="'+('https://www.gv.com.sg/media/cms/js/'+n+'"><\/script>'));}
+    window.jQuery || wscript('jquery.min.js');
+    window.angular || wscript('angular.min.js');
+    (function() {try {window.angular.module('ngRoute');}catch(e) {return false;}return true;})()||wscript('angular-route.min.js');
+    (window.CryptoJS && window.CryptoJS.PBKDF2)||wscript('pbkdf2.js');
+    (window.CryptoJS && window.CryptoJS.AES)||wscript('aes.js');
+</script>
+<script src="https://www.gv.com.sg/media/cms/js/plugin.js?ver=1.0r472"></script>
+<script src="https://www.gv.com.sg/media/cms/js/script.169.js?ver=1.0r472"></script>
+<script>
+    if(!Array.prototype.indexOf){Array.prototype.indexOf=function(a,b){var k;if(this==null)throw new TypeError('"this" is null or not defined');var O=Object(this);var c=O.length>>>0;if(c===0)return-1;var n=+b||0;if(Math.abs(n)===Infinity)n=0;if(n>=c)return-1;k=Math.max(n>=0?n:c-Math.abs(n),0);while(k<c){var d;if(k in O&&O[k]===a)return k;k++}return-1}}function ngIE(n) {for (var i = 0; i < n.length; i++) document.createElement(n[i]);}
+    device.getDetails();
+    if (!isHttps()) {if (!https() && device.data && (device.data.browser != '' && device.data.browserVersion <= 9)) {window.location = 'https:' + window.location.href.substring(window.location.protocol.length);}}
+    if (device.data && (device.data.browser != '' && device.data.browserVersion <= 9)) {ngIE(['accordion','accordion-group','accordion-heading','alert','carousel','slide','tabset','tab','tabset-titles','accordion','accordion-group','accordion-heading','ng-include','ng-pluralize','ng-view','modal','ng:include','ng:pluralize','ng:view']);}
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-50663309-2"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-50663309-2');
+</script>
+
+<script>
+!function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',
+a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+// Insert Twitter Pixel ID and Standard Event data below
+twq('init','o4dzk');
+twq('track','PageView');
+</script>
+
+</head>
+<body id="ng-app">
+<script>
+ function cookieFunction(){
+        $("#dataProtectionDiv").hide();
+        //sessionStorage.setItem('cookiePolicyClicked', 'true');
+        localStorage.setItem('cookiePolicyClicked', 'true');
+    }
+    
+$( document ).ready(function() {
+    //var cookiePolicyClicked = sessionStorage.getItem('cookiePolicyClicked');
+    var cookiePolicyClicked = localStorage.getItem('cookiePolicyClicked');
+    if(cookiePolicyClicked=='true'){
+       $("#dataProtectionDiv").hide();
+    }   else{
+       //$("#dataProtectionDiv").show();
+       //$("#dataProtectionDiv").setAttribute("style", "width: 100%; z-index: 2; position: fixed; opacity: 0.8; bottom: 0px; left: 0px;");
+       document.getElementById("dataProtectionDiv").setAttribute("style", "width: 100%; z-index: 2; position: fixed; opacity: 0.8; bottom: 0px; left: 0px;");
+    }
+    
+   
+});
+</script>
+<div id="dataProtectionDiv" style="display:none">
+<div style="text-align:center;background-color:#000000;color:white;padding-right:10px;padding-left:10px;padding-top:10px;padding-bottom:10px">
+<p>We use cookies to optimise, personalise your experience and for advertising purposes.
+Click <a href="https://www.gv.com.sg/PrivacyPolicy#cookieMgmt" class="data-protection-link" target="_blank">here</a> to learn more about our use of cookies and find out how you can change your browser settings for cookies.
+By continuing to use the website you will be agreeing to our <a href="https://www.gv.com.sg/PrivacyPolicy#/" class="data-protection-link" target="_blank">Privacy Policy</a> and <a href="https://www.gv.com.sg/TermsOfService#/" target="_blank">Terms Of Service</a>.&nbsp;&nbsp;<button type="button" class="btn" id="cookieBtn" onclick="cookieFunction()" style="background-color:#108cff;color:white">Continue</button>
+</p><p></p></div></div>
+<div id="GVTopHeaderCntl" ng-controller="GVTopHeaderCntl">
+<div id="fb-root"></div>
+<div class="header">
+<div class="row">
+<div class="col-md-4 col-sm-3 col-xs-6 col-pg-zero">
+<a class="gv-logo" href="GVHome"><img src="https://media.gv.com.sg/cms/resources/templating-kit/themes/gv/images/gv-logo.png" /></a>
+</div>
+<div class="col-md-3 col-sm-3 hidden-xs">
+<div class="social-media">
+<div>
+<iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fgvmovieclub&amp;send=false&amp;layout=button_count&amp;width=200&amp;show_faces=false&amp;action=like&amp;colorscheme=dark&amp;font=lucida+grande&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowtransparency="true"></iframe>
+</div>
+<span class="pull-left"><small>Follow Us</small></span>
+<ul class="list-unstyled list-inline">
+<li><a href="SocialMedia#Facebook" class="sl-fk" target="_blank"></a></li>
+<li><a href="SocialMedia#Twitter" class="sl-tt" target="_blank"></a></li>
+<li><a href="SocialMedia#Instagram" class="sl-im" style="background-image:url(https://media.gv.com.sg/cms/resources/templating-kit/themes/gv/images/icon-sa-inm-small.png)" target="_blank"></a></li>
+</ul>
+<div class="clearfix"></div>
+</div>
+</div>
+<div class="col-md-5 col-sm-6 col-xs-12 col-pg-zero header-gvmc-section" ng-cloak>
+<div class="gvmc-action-section dropdown">
+<div class="gvmc-text">
+<img src="https://media.gv.com.sg/cms/resources/templating-kit/themes/gv/images/gvmc-text.png">
+</div>
+<div class="gvmc-action-btn">
+<a class="link-km" href="GVMCViewPrivileges.html" ng-show="isLogin==false">Know more?</a>
+<button id="userLoginBtn" class="btn btn-secondary btn-sm btn-toggle" data-toggle="dropdown" ng-show="$root.isLogin == false" ng-click="toggleLogin()">Log In</button> <button class="btn btn-primary btn-sm" ng-show="$root.isLogin == false" ng-click="gvmcRegister()">Register</button>
+<div class="clearfix"></div>
+<div class="dropdown-menu dropdown-menu-right custom-login-box animated fadeInUp">
+<form role="form">
+<h4 style="border:none;margin:0;">Log In</h4>
+<div class="btn-wrapper">
+<div class="row">
+<div class="col-md-12 col-sm-12 col-xs-12">
+</div>
+</div>
+<button type="button" class="fb-login btn-facebook" ng-if="!fbUser" onclick="javascript:fb.login('HeaderLogin');"></button>
+<div ng-if="fbUser && fbUser.fbId && fbUser.fbFirstName && fbUser.fbFirstName.length>0">
+<h5>Hi <span ng-bind-html="fbUser.fbFirstName"></span></h5>
+<button type="button" class="btn-facebook" onclick="javascript:fb.login('HeaderLogin');"></button>
+<h6>If you are not <span ng-bind-html="fbUser.fbFirstName"></span>, please logout of the Facebook account.</h6>
+</div>
+</div>
+<p class="text-center third-title" ng-if="!fbUser || (fbUser && fbUser.fbId)">- OR -</p>
+<div class="form-group">
+<div class="login-input">
+<div ng-show="!isFBLogin && loginErrMessage.length > 0" class="help-inline alert alert-danger" ng-bind-html="loginErrMessage"></div>
+</div>
+<div class="login-input">
+<label><strong>Email or Mobile</strong>:</label>
+<input type="text" class="form-control" placeholder="Email or Mobile" ng-model="loginUsername">
+</div>
+<br>
+<div class="login-input">
+<label>Password:</label>
+<input type="password" class="form-control" placeholder="Password" ng-model="loginPassword">
+</div>
+<div class="submit-section">
+<p style="padding:6px 0;">
+<input type="checkbox" class="checkbox-section ng-pristine ng-valid" style="vertical-align:middle;margin-top:0px;margin-right:6px;" ng-model="rmb" name="rmb">
+<span>Keep me logged in</span>
+</p>
+<a class="ft-pwd pull-right" href="GVMCForgotPass">
+Forgot my password
+</a>
+<button type="submit" class="btn btn-ar btn-primary pull-left" ng-click="gvmcUsrLogin()">Login</button>
+<div class="clearfix"></div>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+<div class="gvmc-section hidden-xs hidden-sm" ng-cloak>
+<a href="GVMCHome" class="gvmc hidden-xs hidden-sm" ng-show="isLogin==true"></a>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="ct-img text-center">
+
+<script>
+/**
+* Function that tracks a click on an outbound link in Analytics.
+*/
+var trackOutboundLink = function(url,label) {
+   console.log('event click');
+   console.log('event ' + url + ' ' + label);
+    tracker = ga.getAll()[0];
+    if (tracker) {
+     tracker.send("event", "link", "click",label);
+    }
+    /*
+    try {
+      ga('send', 'event', {
+        eventCategory: 'link',
+        eventAction: 'click',
+        eventLabel: label,
+        transport: 'beacon'
+      });
+    } catch (e) {
+      console.log(e);
+   }
+    
+  try {
+       gtag('config', 'UA-50663309-2', {
+        	  'page_title' : label,
+        	  'page_path': url
+        	});
+    } catch (e) {
+    }
+   */ 
+  var win = window.open(url, '_blank');
+  win.focus();        
+    
+  }
+</script>
+<script>
+var banner = [
+["https://www.visa.com.sg/pay-with-visa/click-to-pay-with-visa.html.html", "https://media.gv.com.sg/cms/images/ads/VISA_Web_Banner_08_Jul.jpg", "Visa"],
+["https://www.starhub.com/personal/rewards.html", "https://media.gv.com.sg/cms/images/ads/BLKJ190610_SH-lollipop_Rewards_adapts_GV-Banner.gif","starhub"]
+];
+ 
+function shuffle(a) {
+    var j, x, i;
+    for (i = a.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = a[i];
+        a[i] = a[j];
+        a[j] = x;
+    }
+    return a;
+}
+shuffle(banner);
+ 
+</script>
+<div id="ad-container" align="center">
+<script>
+//for responsive design
+
+if (window.matchMedia("(min-width: 1024px)").matches) {
+   document.getElementById('ad-container').innerHTML = '<a href="'+banner[0][0]+'" target="_blank" rel="nofollow" onclick="trackOutboundLink(\''+banner[0][0]+'\',\''+ banner[0][2] + '\'); return false;"><img src="'+banner[0][1]+'" alt="Banner Ad" /></a>';
+} else {
+   document.getElementById('ad-container').innerHTML = '<a href="'+banner[0][0]+'" target="_blank" rel="nofollow" onclick="trackOutboundLink(\''+banner[0][0]+'\',\''+ banner[0][2] + '\'); return false;"><img src="'+banner[0][1]+'" alt="Banner Ad" /></a>';
+}
+
+</script>
+</div>
+</div>
+<div ng-show="isHome && !isOpen">
+</div>
+<div class="bg-note text-center" ng-show="platformSystemData.isShow && !isHome" ng-cloak><p ng-bind-html="platformSystemData.message"></p></div>
+<div role="navigation" class="navbar navbar-default navigation" ng-if="!isHome" ng-controller="GVHeaderCntl" ng-cloak>
+<div class="container-fluid">
+
+<div class="navbar-header">
+<button id="buytixbtn" data-target="#navbar-collapse-2" data-toggle="collapse" class="btn btn-primary btn-sm hidden-sm hidden-md hidden-lg btn-toggle" type="button" ng-click="BuyTixMenuToggle()">Quick Buy
+</button>
+<button id="checkbookbtn" data-target="#navbar-collapse-3" data-toggle="collapse" class="btn btn-primary btn-sm hidden-sm hidden-md hidden-lg btn-toggle" type="button" ng-click="CheckTixToggle()">Check
+Purchase
+</button>
+
+<button id="menubtn" data-target="#navbar-collapse-1" data-toggle="collapse" class="navbar-toggle" type="button" ng-click="MenuListToggle()">
+<span class="sr-only">Toggle navigation</span>
+<div style="float: left;">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</div>
+<div style="float: left;line-height: 1;margin-left: 5px;">Menu</div>
+</button>
+</div>
+
+<div class="collapse navbar-collapse" id="navbar-collapse-2">
+<div class="buy-tickets-collapse hidden-sm hidden-md hidden-lg" ng-cloak>
+<form class="form-horizontal" role="form">
+<div class="dropdown">
+<span>Select a Cinema</span>
+<select class="form-control btn btn-default btn-sm dropdown-toggle ng-pristine ng-valid" aria-haspopup="true" aria-expanded="false" ng-model="selCinema" ng-options="cinema.name for cinema in qbuyLocationMap" ng-change="selectCinemaMainMenu(selCinema)">
+<option value=""></option>
+</select>
+<div class="clearfix"></div>
+</div>
+<div class="dropdown">
+<span>Select a Movie</span>
+<select class="form-control btn btn-default btn-sm dropdown-toggle ng-pristine ng-valid" aria-haspopup="true" aria-expanded="false" ng-model="selMovie" ng-options="dwMov.filmTitle for dwMov in qbuyFilmMap" ng-change="selectMovieMainMenu(selMovie)">
+<option value=""></option>
+</select>
+<div class="clearfix"></div>
+</div>
+<div class="dropdown">
+<span>Select Date</span>
+<select class="form-control btn btn-default btn-sm dropdown-toggle ng-pristine ng-valid" aria-haspopup="true" aria-expanded="false" ng-model="selDate" ng-options="date.convertedDate for date in qBuyDates" ng-change="selectDateMainMenu(selDate)" ng-disabled="qBuyDates.length == 0">
+<option value=""></option>
+</select>
+<div class="clearfix"></div>
+</div>
+<div class="dropdown">
+<span>Select Time</span>
+<select class="form-control btn btn-default btn-sm dropdown-toggle ng-pristine ng-valid" aria-haspopup="true" aria-expanded="false" ng-model="selTime" ng-options="time.time12 for time in qBuyTimes" ng-change="selectTimeMainMenu(selTime)" ng-disabled="qBuyTimes.length == 0">
+<option value=""></option>
+</select>
+<div class="clearfix"></div>
+</div>
+<p class="button-section text-center"><a href="javascript:void(0);" class="btn btn-default" role="button" ng-click="resetQckSeachMov()">Reset</a><a href="javascript:void(0);" class="btn btn-primary" role="button" ng-click="qckSeachMov()">Go</a></p>
+</form>
+</div>
+</div>
+
+
+<div class="collapse navbar-collapse" id="navbar-collapse-3">
+<div class="check-booking-collapse hidden-sm hidden-md hidden-lg">
+<form class="form-horizontal" role="form">
+<div class="dropdown">
+<label><input type="radio" name="bookVal" ng-model="checkBook.bookVal" value="mobile">Mobile No.</label>
+<input type="text" name="mobileVal" class="form-control" ng-model="checkBook.mobileVal" ng-focus="checkBook.bookVal = 'mobile'" ng-disabled="checkBook.bookVal == 'userId'">
+</div>
+<div class="dropdown" style="display: none !important;">
+<label><input type="radio" name="bookVal" ng-model="checkBook.bookVal" value="userId">NRIC/FIN No.</label>
+<input type="text" class="form-control" name="userIdVal" ng-model="checkBook.userIdVal" ng-focus="checkBook.bookVal = 'userId'" ng-disabled="checkBook.bookVal == 'mobile'">
+</div>
+<p class="button-section text-center">
+<a href="javascript:void(0);" class="btn btn-primary" role="button" ng-click="qckChkBook()">Check Booking</a>
+<a href="javascript:void(0);" class="btn btn-primary" role="button" ng-click="qckChkOrder(true)" style="display: none !important;">Check Order</a>
+</p>
+</form>
+</div>
+</div>
+
+
+<div class="collapse navbar-collapse" id="navbar-collapse-4">
+<div class="check-booking-collapse hidden-sm hidden-md hidden-lg" ng-cloak>
+<form class="form-horizontal" role="form">
+<div class="dropdown">
+<label><input type="radio" name="bookVal" ng-model="checkOrder.bookVal" value="mobile">Mobile No.</label>
+<input type="text" name="mobileVal" class="form-control" ng-model="checkOrder.mobileVal" ng-focus="checkOrder.bookVal = 'mobile'" ng-disabled="checkOrder.bookVal == 'userId'">
+</div>
+<div class="dropdown" style="display: none !important;">
+<label><input type="radio" name="bookVal" ng-model="checkOrder.bookVal" value="userId">NRIC/FIN/Passport No.</label>
+<input type="text" class="form-control" name="userIdVal" ng-model="checkOrder.userIdVal" ng-focus="checkOrder.bookVal = 'userId'" ng-disabled="checkOrder.bookVal == 'mobile'">
+</div>
+<p class="button-section text-center"><a href="javascript:void(0);" class="btn btn-primary" role="button" ng-click="qckChkOrder()">Submit</a></p>
+</form>
+</div>
+</div>
+
+
+<div id="navbar-collapse-1" class="collapse navbar-collapse">
+<ul class="nav navbar-nav row">
+<li id="menuGoldClass"><a href="GoldClassHome"><span class="nav-img gs hidden-xs"></span><span class="nav-text hidden-lg hidden-md hidden-sm">Gold Class</span></a></li>
+<li id="menuMovies"><a href="GVMovies"><span class="nav-img movies hidden-xs"></span><span class="nav-text">Movies</span></a></li>
+<li id="menuCinemas"><a href="GVCinemas"><span class="nav-img cinemas hidden-xs"></span><span class="nav-text">Cinemas</span></a></li>
+<li id="menuBuyTickets"><a href="GVBuyTickets"><span class="nav-img tickets hidden-xs"></span><span class="nav-text">Buy Tickets</span></a></li>
+<li id="menuMerchandise"><a href="GVMerchandise"><span class="nav-img merchandise hidden-xs"></span><div ng-bind-html="cartInfoCtr" ng-show="cartInfoCtr > 0" class="gcart-wrapper-2"></div><span class="nav-text">Online Store</span></a></li>
+<li id="menuPromotions"><a href="GVPromotions"><span class="nav-img promotions hidden-xs"></span><span class="nav-text">Promotions/Events</span></a></li>
+<li class="wide-tab" id="menuVouchers"><a href="GVVouchersAndGiftCards"><span class="nav-img vouchers hidden-xs"></span><span class="nav-text">Movie Vouchers &amp; Cards</span></a></li>
+<li class="wide-tab" id="menuCorporateEvents"><a href="GVGroupBookings" class="last"><span class="nav-img events hidden-xs"></span><span class="nav-text">Group Bookings</span></a></li>
+</ul>
+</div>
+
+</div>
+
+</div>
+<a class="gcart-wrapper move ng-hide" ng-click="toggleShoppingCart()" ng-show="isMerchPage == true"><span class="gcart" ng-bind-html="cartInfoCtr">&nbsp;</span></a>
+<div class="modal-dialog sc-dialog ng-hide" role="document" ng-show="showShoppingCart == true" style="position:absolute;">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" ng-click="toggleShoppingCart()"></button>
+<h4 class="modal-title" id="exampleModalLabel" ng-bind-html="shoppingCartTitle">Your Shopping Cart</h4>
+</div>
+<div class="modal-body" ng-show="shoppingCartMode == 0">
+<form>
+<div ng-show="cartErrMessage != null && cartErrMessage.length > 0" class="help-inline alert alert-danger">{{cartErrMessage}}</div>
+<table border="0" width="100%" class="m-location">
+<tr>
+<td width="25%"><label for="location">Collection Location:</label></td>
+<td>
+<select class="form-control btn btn-default btn-sm dropdown-toggle" id="cart-location-dropdown" ng-change="changeCartLocation()" ng-model="cartInfo.location">
+<option value="">--Choose a Collection Location--</option>
+<option ng-repeat="location in cartInfo.locations" value="{{location.id}}" ng-bind-html="location.name" ng-selected="cartInfo.location == location.id"></option>
+</select>
+</td>
+</tr>
+</table>
+<div class="m-list">
+<table border="0" class="d-table hidden-xs" width="100%">
+<tr>
+<th width="54%">Description</th>
+<th class="text-center" width="12%">Price</th>
+<th class="text-center" width="21%">Qty</th>
+<th class="text-center" width="12%">Amount</th>
+</tr>
+<tr class="list-item" ng-repeat="item in cartInfo.items">
+<td colspan="4">
+<table border="0" width="100%" class="i-table">
+<tr>
+<td class="text-center" width="5%"><a class="cancel-item" ng-click="removeFromCart(item.id)"></a></td>
+<td width="12%">
+<img ng-src="{{item.imgLink}}" style="max-height:50px;max-width:50px;" />
+</td>
+<td width="37%"><span ng-bind-html="item.itemName"></span></td>
+<td class="text-center" width="12%"><span ng-bind-html="item.unitPriceStr"></span></td>
+<td class="text-center" width="22%">
+<select class="form-control btn btn-default btn-sm dropdown-toggle" name="QTY_{{item.id}}" ng-change="changeCartItemQuantity(item.id)" ng-model="item.quantity">
+<option ng-repeat="qty in item.quantities" value="{{qty}}" ng-bind-html="qty" ng-selected="qty == item.quantity"></option>
+</select>
+</td>
+<td class="text-center" width="12%"><span ng-bind-html="item.totalPriceStr"></span></td>
+</tr>
+<tr class="c-location">
+<td colspan="6">
+<table border="0" width="100%" class="i-table" ng-show="item.otherLocation == true">
+<tr>
+<td width="48%">
+<span ng-show="item.available == true">Collection Location:</span>
+<span class="error-info" ng-show="item.available == false">Item is not available in this location</span>
+</td>
+<td>
+ <select class="form-control btn btn-default btn-sm dropdown-toggle" name="{{item.id}}" ng-change="changeCartItemLocation(item.id)" ng-model="item.location">
+<option value="">--Choose a Collection Location--</option>
+<option ng-repeat="location in item.locations" value="{{location.id}}" ng-bind-html="location.name" ng-selected="item.location == location.id"></option>
+</select>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table border="0" class="m-table hidden-lg hidden-md hidden-sm" width="100%">
+<tr class="list-item" ng-repeat="item in cartInfo.items">
+<td>
+<table border="0" width="100%" class="i-table">
+<tr>
+<td colspan="2" class="m-pt-title">
+<table border="0" width=" 100%" class="i-table">
+<tr>
+<th><img ng-src="{{item.imgLink}}" style="max-height:50px;max-width:50px;" /></th>
+<th><span ng-bind-html="item.itemName"></span></th>
+<th width="10%"><a class="cancel-item" ng-click="removeFromCart(item.id)"></a></th>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td width="30%">Price:</td>
+<td><span ng-bind-html="item.unitPriceStr"></span></td>
+</tr>
+<tr>
+<td width="30%">Qty:</td>
+<td>
+<select class="form-control btn btn-default btn-sm dropdown-toggle" name="QTY_{{item.id}}" ng-change="changeCartItemQuantity(item.id)" ng-model="item.quantity">
+<option ng-repeat="qty in item.quantities" value="{{qty}}" ng-bind-html="qty" ng-selected="qty == item.quantity"></option>
+</select>
+</td>
+</tr>
+<tr>
+<td width="30%">Amount:</td>
+<td><span ng-bind-html="item.totalPriceStr"></span></td>
+</tr>
+<tr class="c-location">
+<td colspan="2">
+<table border="0" width="100%" class="i-table" ng-show="item.otherLocation == true">
+<tr>
+<td width="48%">
+<span ng-show="item.available == true">Collection Location:</span>
+<span class="error-info" ng-show="item.available == false">Item is not available in this location</span>
+</td>
+<td>
+<select class="form-control btn btn-default btn-sm dropdown-toggle" name="{{item.id}}" ng-change="changeCartItemLocation(item.id)" ng-model="item.location">
+<option value="">--Choose a Collection Location--</option>
+<option ng-repeat="location in item.locations" value="{{location.id}}" ng-bind-html="location.name" ng-selected="item.location == location.id"></option>
+</select>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<div class="m-amount text-right">Total: <span class="value" ng-bind-html="cartInfo.totalPriceStr"></span></div>
+<div class="m-amount text-left" ng-show="cartInfo.collectionDate != null && cartInfo.collectionDate.length > 0">
+<span style="font-size:1.7em;color:#333;background-color:#ffd701;padding:5px;">Collection Date From: <span ng-bind-html="cartInfo.collectionDate"></span></span>
+</div>
+</div>
+</form>
+</div>
+<div class="modal-body" ng-show="shoppingCartMode == 1">
+<form>
+<div ng-show="wishErrMessage != null && wishErrMessage.length > 0" class="help-inline alert alert-danger">{{wishErrMessage}}</div>
+<div class="account-login text-right">
+<button type="button" class="btn btn-sm btn-secondary" ng-click="toggleShoppingCartMode()">Go to Shopping Cart</button>
+</div>
+<div class="m-list">
+<table border="0" class="d-table" width="100%">
+<tr class="hidden-xs">
+<th width="66%">Description</th>
+<th class="text-center" width="22%">&nbsp;</th>
+<th class="text-center" width="12%">&nbsp;</th>
+</tr>
+<tr class="hidden-sm hidden-md hidden-lg">
+<th width="100%">Description</th>
+</tr>
+<tr class="list-item hidden-xs" ng-repeat="item in wishInfo">
+<td colspan="4">
+<table border="0" width="100%" class="i-table">
+<tr>
+<td width="12%"><img ng-src="{{item.imgLink}}" style="max-height:50px;max-width:50px;" /></td>
+<td width="54%"><span ng-bind-html="item.itemName"></span></td>
+<td class="text-center" width="22%"><button type="button" class="btn btn-third" ng-click="removeFromWish(item.productCode, item.itemCode)">Remove</button></td>
+<td class="text-center" width="12%"><button type="button" class="btn btn-primary" ng-click="viewItem(item.productCode)">View</button></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr class="list-item hidden-sm hidden-md hidden-lg" ng-repeat="item in wishInfo">
+<td>
+<table border="0" width="100%" class="i-table">
+<tr>
+<td width="17%"><img ng-src="{{item.imgLink}}" style="max-height:50px;max-width:50px;" /></td>
+<td width="83%"><span ng-bind-html="item.itemName"></span></td>
+</tr>
+</table>
+<table border="0" width="100%" class="i-table">
+<tr>
+<td class="text-left" width="100%">
+<button type="button" class="btn btn-third" ng-click="removeFromWish(item.productCode, item.itemCode)">Remove</button>
+<button type="button" class="btn btn-primary" ng-click="viewItem(item.productCode)">View</button>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+</form>
+</div>
+<div class="modal-footer" style="text-align: center;">
+<div ng-show="shoppingCartMode == 0">
+<div class="col-md-4 col-sm-4 col-xs-12 vc-payment" style="text-align: center;">
+<div class="vc-checkout">
+<img alt="Visa Checkout" class="v-button vc-button" src="https://secure.checkout.visa.com/wallet-services-web/xo/button.png?color=neutral" style="max-width: 100%;" />
+</div>
+</div>
+<div class="col-md-4 col-sm-4 col-xs-12 vc-payment" style="text-align: center;">
+<img alt="Credit/Debit Card" src="https://www.gv.com.sg/media/cms/igv/images/btn-pay-paylah.png" style="cursor: pointer; width: 215px; max-width: 100%;" ng-click="checkoutShoppingCart('PL', null)" />
+</div>
+<div class="col-md-4 col-sm-4 col-xs-12 vc-payment" style="text-align: center;">
+<img alt="Credit/Debit Card" src="https://www.gv.com.sg/media/cms/resources/templating-kit/themes/gv/images/btn-credit-card-payment.png" style="cursor: pointer; max-width: 100%;" ng-click="checkoutShoppingCart('CC', null)" />
+</div>
+</div>
+<div class="clearfix"></div>
+<br />
+<div>
+<button type="button" class="btn btn-third" ng-click="toggleShoppingCart()">Continue Shopping</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script type="text/ng-template" id="GVMC-LinkFB.html">
+    <div id="warningMessage">
+        <div class="modal-header">
+            <h3 class="modal-title">Link Facebook Account</h3>
+        </div>
+        <div class="container-fluid">
+            <div class="main-content">
+                <div class="consumer-advisory">
+                    <div>
+                        Do you want to link your Facebook account with your GV Movie Club account?
+                    </div>
+                    <div class="text-center button-section">
+                        <button type="button" class="btn btn-primary btn-sm" ng-click="ok()">Yes</button> <button type="button" class="btn btn-default btn-sm" ng-click="cancel()">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<meta name="description" content="New movie tickets promotions, now showing and upcoming movies show times" />
+<div id="buy-tickets" class="wrapper" ng-controller="GVBuyTicketsCntl"> 
+<a class="btn-scroll" href="javascript:void(0);" ng-click="scrollToTop()">
+<img src="https://media.gv.com.sg/cms/resources/templating-kit/themes/gv/images/arrow-up.png" />
+</a>
+<div class="container-fluid" id="print-area">
+<a class="logo"><img ng-src="https://media.gv.com.sg/cms/resources/templating-kit/themes/gv/images/pt-logo.png" /></a>
+
+<ol class="breadcrumb">
+<li><a href="GVHome">
+<small>Home</small>
+</a></li>
+<li class="pt-last">
+<small>Buy Tickets</small>
+</li>
+</ol>
+<div class="clearfix"></div>
+<div class="main-content">
+<div class="notice-print">
+<div class="row">
+<div class="col-md-9 col-sm-9 col-xs-12 col-pg-zero">
+<p>Please click on your preferred show time or select a date.</p>
+</div>
+<div class="col-md-3 col-sm-3 col-xs-12 col-pg-zero">
+<button class="btn btn-forth btn-sm" onclick="printDiv('print-area')">
+<span>
+<img src="https://media.gv.com.sg/cms/resources/templating-kit/themes/gv/images/icon-printer.png" />
+</span> Printer friendly version
+</button>
+</div>
+</div>
+</div>
+<div class="loading" ng-show="isLoading==true">
+<br>
+<div class="row">
+<p style="text-align: center" class="help-inline alert alert-success">Details </p>
+  <style>
+  .table1 {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
+}
+  .table2 {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 123%;
+}
+
+td, th {
+  border-style: solid ;
+  border-color: black;
+  border-width: 5px;
+  text-align: left;
+  padding: 10px;
+}
+  </style>
+  <script>
+    var cinema;
+    var movie;
+    var timing;
+    //Create Table by accessing Url parameters
+    $( document ).ready(function() {
+      var urlStr = window.location.href;
+      //var urlStr = "https://geraldcdx.github.io/ProjectGV/2ndPage?cinema=Gv_VivoCity&movie=Tenet&timing=30th_Nov_330pm_2020";
+      var url = new URL(urlStr);
+      cinema = url.searchParams.get("cinema"); //function to retrieve the para
+      movie = url.searchParams.get("movie"); //function to retrieve the para
+      timing = url.searchParams.get("timing"); //function to retrieve the para
+      //alert(cinema); alert(timing);alert(movie);
+      var timingPara = timing.split("_");
+      var date = timingPara[0];
+      var dateMonth = timingPara[1];
+      var dateTime = timingPara[2];
+      var dateYear = timingPara[3];
+      //alert(time);
+      //alert(findDay("su"));
+      //Add into the id = "dateRow" the variable for findDay and movie theatre TODO
+      //Table Headers
+      document.getElementById('dateRow').innerHTML = addHeaders(subSpaces(cinema), date, dateMonth);
+      //#timingrow
+      document.getElementById('timingRow').innerHTML = addTimings(subSpaces(movie), dateTime);
+      
+    });
+    //function to bring spaces back
+    function subSpaces(str){
+      var split = str.split("_");
+      return split.join(" ");
+    }
+    //function to route
+    function changeUrlParas(id){
+      //input code here to extract the searchbar
+      var timingPara = timing.split("_");
+      var date = timingPara[0];
+      var dateMonth = timingPara[1];
+      var dateTime = timingPara[2];
+      var dateYear = timingPara[3];
+      var newStr= date +"_"+ dateMonth+"_" + id+"_" + dateYear;
+      var str = "https://geraldcdx.github.io/ProjectGV/GVWebsite3?cinema=" + cinema + "&movie=" + movie + "&timing=" + newStr;
+      document.getElementById(id).setAttribute('href', str );   
+    }
+    
+    //Function to make fake timings
+     function addTimings(movie, time) {
+       var str="";
+       var timing = ["1pm", "330pm", "5pm", "830pm"];
+      var c = "</a>";
+       str+= "<th style=\"background-color: #262626\">" + movie + "</th><th style=\"background-color: #404040\">";
+       var i;
+       for (i=0; i<timing.length;i++){
+         str += "<a id= \""+ timing[i] +  "\" onclick = \"return changeUrlParas(this.id)\" href=\"\"  class=\"btn btn-primary timingBtn\"></button>"
+           + timing[i] + c +"&nbsp;&nbsp;";
+         //alert(str);
+       }
+       return str +"</th>";
+     }
+    //Function to add in table headers
+    function addHeaders(cinema, day, month){
+      var check = day + " " + month;
+      //alert(check);
+      var days = [ "30th Nov", "1st Dec"," 2nd Dec","3rd Dec", "4th Dec"];
+      var str="";
+      var o = "<th style=\"background-color: #404040\">";
+      var c = "</th>";
+      str += "<th>" + cinema + c;
+      str += "<th style=\"background-color: 	#FFD700\">" + "Today" + c;
+      var iter;
+      for (iter=1; iter<days.length;iter++) {
+        str += o + days[iter] + c;
+      }
+      
+      return str;
+    }    
+  </script>
+   <table class="table1" id="movieTable">
+      <tr id="dateRow"></tr>
+  </table>
+  <table class="table2">
+      <tr  id="timingRow" ></tr>
+  </table>
+  
+</div>
+<br>
+</div>
+
+<div class="buy-tickets-section" ng-repeat="cinema in cinemas | filter:filterCinema">
+<div class="tab-header-small" ng-attr-id="{{'CinemaId-' + cinema.index}}">
+<div class="row">
+<div class="col-md-3 col-sm-12 col-xs-8 col-pg-zero">
+<p ng-bind-html="cinema.name"></p>
+</div>
+
+<div class="col-md-9 col-sm-12 hidden-xs col-pg-zero time-slot-list">
+<ul class="nav nav-tabs" role="tablist">
+<li ng-repeat="date in dates" ng-class="{'active':selectedDayIndex=={{$index}}}" ng-click="changeDayTab($index, cinema.id, date.ms)"><a data-toggle="tab" ng-bind-html="date.name"></a></li>
+</ul>
+</div>
+<div class="col-xs-4 hidden-sm hidden-md hidden-lg col-pg-zero time-slot-dropdown">
+<div class="dropdown">
+<select id="cinema-{{cinema.index}}-day" class="form-control btn btn-default btn-sm dropdown-toggle ng-pristine ng-valid" aria-haspopup="true" aria-expanded="false" required="required" ng-model="selected" ng-options="date.name for date in datesByIndex" ng-change="changeDayTab(selected.index, cinema.id, selected.ms)">
+<option value="" ng-if="false">-- Select A Day --</option>
+</select>
+</div>
+</div>
+
+</div>
+</div>
+<div ng-class="{'announcement':announcement[cinema.id].length>0}" ng-show="announcement[cinema.id].length>0" ng-bind-html="announcement[cinema.id]">Please click on your preferred show time or select a date. Show times in grey indicates that tickets sold out.</div>
+<div style="background-color:#262626;padding:10px" ng-show="isSessionAPIError!=true && (cinema.id=='50' || cinema.id=='70' || cinema.id=='80') && (selectedDate.data.cinemas[updateCinemaIndex(cinema,selectedDate.data.cinemas)].movies==null || selectedDate.data.cinemas[updateCinemaIndex(cinema,selectedDate.data.cinemas)].movies.length==0)">
+There are no movie sessions available. Please visit us again for updates.
+</div>
+<div style="background-color:#262626;padding:10px" ng-show="isSessionAPIError!=true && (cinema.id=='60') && (selectedDate.data.cinemas[updateCinemaIndex(cinema,selectedDate.data.cinemas)].movies==null || selectedDate.data.cinemas[updateCinemaIndex(cinema,selectedDate.data.cinemas)].movies.length==0)">
+GV Katong is closed for enhancement works & will reopen in 2021. Please visit Gold Class Suntec City, Gold Class VivoCity or Gold Class Grand, Great World City in the meantime.
+</div>
+<div style="background-color:#262626;padding:10px" ng-show="isSessionAPIError!=true && (cinema.id=='051*') && (selectedDate.data.cinemas[updateCinemaIndex(cinema,selectedDate.data.cinemas)].movies==null || selectedDate.data.cinemas[updateCinemaIndex(cinema,selectedDate.data.cinemas)].movies.length==0)">
+There is no session in Dolby Atmos format.
+</div>
+<div style="background-color:#262626;padding:10px" ng-show="isSessionAPIError!=true && (cinema.id=='122') && (selectedDate.data.cinemas[updateCinemaIndex(cinema,selectedDate.data.cinemas)].movies==null || selectedDate.data.cinemas[updateCinemaIndex(cinema,selectedDate.data.cinemas)].movies.length==0)">
+There is no session in Auro 11.1 format.
+</div>
+<div style="background-color:#262626;padding:10px" ng-show="isSessionAPIError!=true && (cinema.id=='02*') && (selectedDate.data.cinemas[updateCinemaIndex(cinema,selectedDate.data.cinemas)].movies==null || selectedDate.data.cinemas[updateCinemaIndex(cinema,selectedDate.data.cinemas)].movies.length==0)">
+There is no session in D-Box format.
+</div>
+<div style="background-color:#262626;padding:10px" ng-show="isSessionAPIError!=true && !(cinema.id=='122' || cinema.id=='02*' || cinema.id=='051*' || cinema.id=='50' || cinema.id=='60' || cinema.id=='70' || cinema.id=='80') && (selectedDate.data.cinemas[updateCinemaIndex(cinema,selectedDate.data.cinemas)].movies==null || selectedDate.data.cinemas[updateCinemaIndex(cinema,selectedDate.data.cinemas)].movies.length==0)">
+<span ng-if="((selectedDayIndex==0 && ['Sunday','Monday','Tuesday','Wednesday','Thursday'].indexOf(datesByIndex[1].day) > -1) || ['Saturday','Sunday','Monday','Tuesday','Wednesday'].indexOf(datesByIndex[selectedDayIndex].name) > -1) && cinema.id!=10" ">
+There are no movie sessions available. Please visit us again for updates.
+</span>
+<span ng-if="((selectedDayIndex==0 && ['Sunday','Monday','Tuesday','Wednesday','Thursday'].indexOf(datesByIndex[1].day) == -1) || ['Saturday','Sunday','Monday','Tuesday','Wednesday'].indexOf(datesByIndex[selectedDayIndex].name) == -1) && cinema.id!=10" ">
+There are no movie sessions available. Please visit us again for updates.
+</span>
+<span ng-if="((selectedDayIndex==0 && ['Sunday','Monday','Tuesday','Wednesday','Thursday'].indexOf(datesByIndex[1].day) > -1) || ['Saturday','Sunday','Monday','Tuesday','Wednesday'].indexOf(datesByIndex[selectedDayIndex].name) > -1)   && cinema.id==10">
+GV Katong is closed for enhancement works & will reopen in 2021. Please visit GV Paya Lebar or GV Bedok in the meantime.
+</span>
+<span ng-if="((selectedDayIndex==0 && ['Sunday','Monday','Tuesday','Wednesday','Thursday'].indexOf(datesByIndex[1].day) == -1) || ['Saturday','Sunday','Monday','Tuesday','Wednesday'].indexOf(datesByIndex[selectedDayIndex].name) == -1)   && cinema.id==10">
+GV Katong is closed for enhancement works & will reopen in 2021. Please visit GV Paya Lebar or GV Bedok in the meantime.
+</span>
+</div>
+<div class="bg-note text-center" style="width:100%" ng-show="isSessionAPIError==true && (selectedDate.data.cinemas[updateCinemaIndex(cinema,selectedDate.data.cinemas)].movies==null || selectedDate.data.cinemas[updateCinemaIndex(cinema,selectedDate.data.cinemas)].movies.length==0)">
+<p class="ng-binding" style="width:100%">Please refresh your browser again to get this movie session.</p>
+</div>
+
+<div class="tickets-content clearfix">
+<div class="alert-container" ng-show="cinema.status==0" ng-bind-html="cinema.statusMessage"></div>
+
+<div class="cinemas-times-section" ng-repeat="movie in selectedDate.data.cinemas[updateCinemaIndex(cinema,selectedDate.data.cinemas)].movies" ng-show="movie.times.length>0">
+
+
+<div class="movies-section">
+<div class="row">
+<div class="col-md-3 col-sm-12 col-xs-12 col-pg-zero">
+<div class="movie-details">
+<p ng-show="selectedDayIndex==7" ng-bind-html="movie.times[0].showDate"></p>
+<a href="GVMovieDetails#/movie/{{movie.filmCd}}/cinema/{{cinema.id}}">
+<span ng-bind-html="movie.filmTitle"></span>
+<img style="width:41px;height:34px" ng-show="movie.priorityBkgFlg==true" src="https://media.gv.com.sg/cms/resources/templating-kit/themes/gv/images/icon-gvmc.png">
+</a>
+<p ng-show="movie.subTitles.length>0">(Sub:<span ng-repeat="subTitle in movie.subTitles">&nbsp;{{subTitle}}</span>)<br>
+</p>
+<p>
+<small><span ng-bind-html="movie.rating"></span><span ng-show="movie.consumerAdvice.length>0">&nbsp;/&nbsp;{{movie.consumerAdvice}}</span></small>
+</p>
+</div>
+</div>
+<div class="col-md-9 col-sm-12 col-xs-12 col-pg-zero">
+<div class="movie-time-body">
+<ul class="list-unstyled list-inline">
+<li ng-repeat="time in movie.times">
+<button class="btn btn-sm" ng-class="{'btn-primary':time.soldPercent<0.7,'btn-fifth':time.soldPercent>=0.7 && time.soldPercent<1 ,'btn-third':time.soldPercent>=1}" ng-bind-html="time.convertedTime" ng-click="timeTapped(cinema,movie,time)" tooltip="{{ (time.soldPercent>=1) ? 'SOLD OUT' : (time.soldPercent>=0.7) ? 'SELLING FAST' : ''}}" tooltip-append-to-body="true"></button>
+</li>
+</ul>
+<div class="clearfix"></div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+ 
+</div>
+
+<div class="tc">
+<h6>* Free tickets cannot be used for movie admission.</h6>
+</div>
+</div>
+</div>
+</div>
+<script>
+    function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
+        var popupWin = window.open('', '_blank', 'width=600,height=600');
+        var url = '//www.gv.com.sg/media' + (window.gv.staging ? '/cmsstg/' : '/cms/') + 'css/';
+        var cssStyle = url + 'style.css';
+        var cssPrint = url + 'print.css';
+        popupWin.document.open();
+        popupWin.document.write('<html><head><link rel="stylesheet" type="text/css" href="' + cssStyle + '" media="screen"/><link href="' + cssPrint + '" rel="stylesheet" type="text/css" media="print" /><title>GoldenVillage</title><style>.ng-hide {display:none}</style></head><body onload="window.print()">' + printContents + '</body></html>');
+        popupWin.document.close();
+    }
+</script>
+<div class="footer-section container-fluid">
+<div class="footer-section-content">
+<div class="content-list">
+<div class="row">
+<div class="col-xs-12 col-md-3 col-sm-6">
+<div class="st-section">
+<h5>Information</h5>
+<div class="in-content">
+<ul class="hyperlink list-unstyled">
+<li><a href="GVHome">Home</a></li>
+<li><a href="AboutUs">About GV</a></li>
+<li><a href="PressRoom">Press Room</a></li>
+<li><a href="Distribution">Distribution</a></li>
+<li><a href="JobsGV">Jobs at GV</a></li>
+<li><a href="ContactUs">Contact Us</a></li>
+</ul>
+<ul class="hyperlink list-unstyled">
+<li><a href="SocialMedia">Social Media</a></li>
+<li><a href="FAQ">F.A.Q</a></li>
+<li><a href="TermsOfService">Terms of Service</a></li>
+<li><a href="PrivacyPolicy">Privacy Policy</a></li>
+<li><a href="PrivacyPolicy#cookieMgmt">Ad Choices</a></li>
+</ul>
+<div class="clearfix"></div>
+</div>
+</div>
+</div>
+<div class="col-xs-12 col-md-3 col-sm-6">
+<div class="st-section igv-app">
+<h5>Get GV Mobile App</h5>
+<div class="apps-list">
+<ul class="hyperlink list-unstyled">
+<li><a href="https://itunes.apple.com/sg/app/igv/id293615901?mt=8" target="_blank" class="app-store-iphone"></a></li>
+<li><a href="https://play.google.com/store/apps/details?id=com.gv.igv" target="_blank" class="google-play"></a></li>
+<li><a href="https://appgallery.cloud.huawei.com/marketshare/app/C100996615?locale=en_GB&source=appshare&subsource=C100996615" target="_blank" class="Huawei-AppGallery"></a></li>
+</ul>
+<div class="igv-app-icon">
+<img height="71" width="71" src="https://media.gv.com.sg/cms/resources/templating-kit/themes/gv/images/igv-app.png" />
+</div>
+<div class="clearfix"></div>
+</div>
+</div>
+</div>
+<div class="col-xs-12 col-md-2 col-sm-6">
+<div class="st-section follow">
+<h5>Follow Us</h5>
+<div class="row">
+<div class="col-md-12 col-xs-12 col-sm-12 col-pg-zero">
+<ul class="list-unstyled">
+<li class="pull-left"><a href="SocialMedia#Facebook" target="_blank" class="sl-fk show"></a></li>
+<li class="pull-left"><a href="SocialMedia#Twitter" target="_blank" class="sl-tt show"></a></li>
+<li class="pull-left"><a href="SocialMedia#Instagram" target="_blank" class="sl-im show" style="background-image:url(https://media.gv.com.sg/cms/resources/templating-kit/themes/gv/images/icon-sa-inm.png)"></a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="col-xs-12 col-md-2 col-sm-6">
+<div class="st-section last">
+<h5>Secure Payment</h5>
+<ul class="list-unstyled">
+<li class="pull-left"><img src="https://media.gv.com.sg/cms/resources/templating-kit/themes/gv/images/preferred-card.png" /></li>
+<li class="pull-left"><img src="https://media.gv.com.sg/cms/resources/templating-kit/themes/gv/images/verified-visa.png" /></a></li>
+<li class="pull-left"><img src="https://www.gv.com.sg/media/cms/resources/templating-kit/themes/gv/images/visaSRC.jpg" /></li>
+</ul>
+<div class="clearfix"></div>
+</div>
+</div>
+<div class="col-xs-12 col-md-2 col-sm-6">
+<div class="st-section last">
+
+<h5>Certified</h5>
+<ul class="list-unstyled">
+<li class="pull-left"><img src="https://media.gv.com.sg/cms/resources/templating-kit/themes/gv/images/Logo_SQC_S-CLASS.GIF" style="width: auto; height: 50px;" /></li>
+
+</ul>
+<div class="clearfix"></div>
+</div>
+</div>
+</div>
+</div>
+<p class="text-center site-declaration">
+<small>&copy;2020 Golden Village Multiplex Pte Ltd. All rights reserved. No part of this website may be reproduced in any form without our
+written permission.
+</small>
+</p>
+</div>
+</div>
+</body>
+</html>
