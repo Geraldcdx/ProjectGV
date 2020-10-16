@@ -688,7 +688,7 @@ Purchase
   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><!-- jQuery base library needed -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-  <select id = "cinemaOptions" class="js-example-basic-single" name="state" >
+  <select id = "cinemaOptions" class="form-control btn btn-default btn-sm" >
   <option value="AL">GV Vivocity</option>
   <option value="WY">GV Plaza</option>
 </select>
@@ -705,24 +705,53 @@ Purchase
     $(document).ready(function() {
     $('.js-example-basic-single').select2({width:"100%"});
       document.getElementById('cinemaOptions').innerHTML = addCinema();
+      document.getElementById('moviePH').innerHTML = addMovie();
+      document.getElementById('dateTimePH').innerHTML = addDateTime();
     });
     function addCinema(){
       var str = "";
+      var returnStr="";
       str += "Select Cinema-Gold Class Express Funan-Gold Class Suntec City-Gold Class VivoCity-Gold Class Grand, Great World City-Deluxe Plus,Funan-Duo Deluxe,Paya Labar-DBOX, Bishan-GVmax, VivoCity-Gemini Funan-Gemini City Square-Gemini Grand, Great World City-Grand Seats, Great World City-GV Funan-GV Bedok-GV Paya Lebar-GV Tiong Bahru-GV Suntec City-GV VivoCity-GV Plaza-GV Tampines-GV Jurong Point- GV Bishan-GV Tampines-GV Jurong Point-GV Bishan-GV City Square-GV Grand, Great World City-GV Yishun-GVmax Dolby Atmos, VivoCity-Auro 11.1 by Barco, GV Suntec City-GV @ Capitol (Stall: Level 1)-GV @ Capitol (Dress: Level 3)-GV @ Capitol (Upper Circle: Level 4)";
       var splitStr = str.toString().split("-");
       var i;
       for (i=0;i<splitStr.length;i++)
-      str += "<option>" + splitStr[i] + "</option>";      
-      return str;
+      returnStr += "<option>" + splitStr[i] + "</option>";       
+      return returnStr;
     }
+    
+    function addMovie(){
+      var str = "";
+      var rStr = "";
+      str += "Select Movie,Tenet,21 Bridges,Beauty Water, Coffee Or Tea, Corpus Christi, Disney's Mulan, Do you Love Me As I Love You?, Halloween, Happy Death Day,Hereditary,John Wick: Chapter 3, Jumanji: THe Next Level, Leap, The Tunnel, Trolls World Tour, Unhinged, Upgrade, Vanguard";
+      var splitStr = str.toString().split(",");
+      var i;
+      for (i=0;i<splitStr.length;i++){
+          rStr += "<option>" + splitStr[i] + "</option>";        
+      }
+      return rStr;
+    }
+    function addDateTime(){
+      var str = "";
+      var rStr = "";
+      str += "Select Date & Time,30th Nov 1pm 2020,30th Nov 330pm 2020, 30th Nov 5pm 2020, 30th Nov 830pm 2020";
+      var splitStr = str.toString().split(",");
+      var i;
+      for (i=0;i<splitStr.length;i++){
+          rStr += "<option>" + splitStr[i] + "</option>";        
+      }
+      return rStr;
+    }
+    
+
+    
   </script>
 </p>
 </li>
 <li class="col-md-3 col-sm-5 col-xs-6">
 <p>Movie:</p>
 <p class="ticket-content">
-<select class="form-control btn btn-default btn-sm dropdown-toggle ng-pristine ng-valid" aria-haspopup="true" aria-expanded="false" ng-model="selMovieDate" ng-options="movDate.convertedDate for movDate in selMovieCinema.dates" ng-change="selectMovieDate(selMovieDate)">
-<option id = "datePC"value="">Select Movie</option>
+<select id = "moviePH" class="form-control btn btn-default btn-sm"  >Select Movie
+<option  value="">Select Movie</option>
   <option value="">Today</option>
   <option value="">Tomorrow</option>
 </select>
@@ -731,7 +760,7 @@ Purchase
 <li class="col-md-3 col-sm-5 col-xs-6">
 <p>Time:</p>
 <p class="ticket-content">
-<select class="form-control btn btn-default btn-sm dropdown-toggle ng-pristine ng-valid" aria-haspopup="true" aria-expanded="false" ng-model="selMovieTime" ng-options="movTime.convertedTime for movTime in selMovieDate.times" ng-change="selectMovieTime(selMovieTime)">
+<select id= "dateTimePH" class="form-control btn btn-default btn-sm ">
 <option id = "timePC" value="">Select Time & Date</option>
   <option value="">1430</option>
   <option value="">1830</option>
@@ -741,12 +770,26 @@ Purchase
 </li>  
 <li class="col-md-3 col-sm-5 col-xs-6">
 <p>&nbsp;</p>
-<p><a id = "go" onclick ="return changeUrl();" href="https://geraldcdx.github.io/ProjectGV/2ndPage?cinema=x?movie=y?timing=z" class="btn btn-primary" role="button" ng-click="qckSeachMov()">Go</a></p> 
+<p><a id = "go" onclick ="return changeUrl();" href="" class="btn btn-primary" role="button" ng-click="qckSeachMov()">Go</a></p> 
   <script type="text/javascript">
     function changeUrl(){
       //input code here to extract the searchbar
-      document.getElementById('go').setAttribute('href',
-                                                 'https://geraldcdx.github.io/ProjectGV/2ndPage?cinema=' + "GvVivoCity&movie=Tenet&timing=tues_13_Oct_2020_1730" );
+      var paraNames= ["cinemaOptions", "moviePH", "dateTimePH"];
+      var urlPara = ["cinema", "movie", "timing"];
+      var i;
+      var parameters = "?";
+      for (i=0;i<paraNames.length;i++){
+      var sel = document.getElementById(paraNames[i]);
+      var opt = sel.options[sel.selectedIndex];
+      //alert(subSpace(opt.text));
+       if( i!= 0) parameters+="&";
+      parameters += urlPara[i] + "=" + subSpace(opt.text);
+      }
+      document.getElementById('go').setAttribute('href', 'https://geraldcdx.github.io/ProjectGV/GVWebsite2' + parameters );
+    }
+    function subSpace(str){
+      var split = str.split(" ");
+      return split.join("_");
     }
     
     </script>
