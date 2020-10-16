@@ -625,7 +625,7 @@ tickets sold out.</p>
 <div class="loading" ng-show="isLoading==true">
 <br>
 <div class="row">
-<p style="text-align: center" class="help-inline alert alert-success">Need </p>
+<p style="text-align: center" class="help-inline alert alert-success">Details </p>
   <style>
   table {
   font-family: arial, sans-serif;
@@ -645,57 +645,65 @@ td, th {
     var timing;
     //Create Table by accessing Url parameters
     $( document ).ready(function() {
-        var urlStr = window.location.href;
-      //var urlStr = "https://geraldcdx.github.io/ProjectGV/2ndPage?cinema=GvVivoCity&movie=Tenet&timing=tues_13_Oct_2020_1730";
+      var urlStr = window.location.href;
+      //var urlStr = "https://geraldcdx.github.io/ProjectGV/2ndPage?cinema=Gv_VivoCity&movie=Tenet&timing=30th_Nov_330pm_2020";
       var url = new URL(urlStr);
       cinema = url.searchParams.get("cinema"); //function to retrieve the para
       movie = url.searchParams.get("movie"); //function to retrieve the para
       timing = url.searchParams.get("timing"); //function to retrieve the para
       //alert(cinema); alert(timing);alert(movie);
       var timingPara = timing.split("_");
-      var day = timingPara[0];
-      var dateDay = timingPara[1];
-      var dateMonth = timingPara[2];
+      var date = timingPara[0];
+      var dateMonth = timingPara[1];
+      var dateTime = timingPara[2];
       var dateYear = timingPara[3];
-      var time = timingPara[4];
       //alert(time);
       //alert(findDay("su"));
       //Add into the id = "dateRow" the variable for findDay and movie theatre TODO
       //Table Headers
-      document.getElementById('dateRow').innerHTML = addHeaders(cinema, findDay("tue"));
+      document.getElementById('dateRow').innerHTML = addHeaders(subSpaces(cinema), date, dateMonth);
       //#timingrow
-      document.getElementById('timingRow').innerHTML = addTimings(movie, time);
+      document.getElementById('timingRow').innerHTML = addTimings(subSpaces(movie), dateTime);
       
     });
+    //function to bring spaces back
+    function subSpaces(str){
+      var split = str.split("_");
+      return split.join(" ");
+    }
     //function to route
-    function changeUrlParas(){
+    function changeUrlParas(id){
       //input code here to extract the searchbar
-      var str = "https://geraldcdx.github.io/ProjectGV/3rdPage?cinema=" + cinema + "&movie=" + movie + "&timing=" + timing;
+      var timingPara = timing.split("_");
+      var date = timingPara[0];
+      var dateMonth = timingPara[1];
+      var dateTime = timingPara[2];
+      var dateYear = timingPara[3];
+      var newStr= date +"_"+ dateMonth+"_" + id+"_" + dateYear;
+      var str = "https://geraldcdx.github.io/ProjectGV/3rdPage?cinema=" + cinema + "&movie=" + movie + "&timing=" + newStr;
+      alert(str);
       document.getElementById('go').setAttribute('href', str );   
     }
     
-    //convert 24hr to 12hr
-    function xform(time){
-      if (time>=1200) {
-        if(time>=1300) time -= 1200;
-        time+= "PM";
-      }
-      else time += "AM";
-      return time;
-    }
     //Function to make fake timings
      function addTimings(movie, time) {
        var str="";
-      var o = "<a id= \"go\" onclick = \"return changeUrlParas()\" href=\"\"  class=\"btn btn-primary\"></button>";
+       var timing = ["1pm", "330pm", "5pm", "830pm"];
       var c = "</a>";
        str+= "<th>" + movie + "</th>";
-       str+= o +xform(time)+c;
-       str += o + "700PM" + c;
-       str += o + "930PM"+ c;
+       var i;
+       for (i=0; i<timing.length;i++){
+         str += "<a id= \""+ timing[i] +  "\" onclick = \"return changeUrlParas(this.id)\" href=\"\"  class=\"btn btn-primary timingBtn\"></button>"
+           + timing[i] + c;
+         //alert(str);
+       }
        return str;
      }
     //Function to add in table headers
-    function addHeaders(cinema, days){
+    function addHeaders(cinema, day, month){
+      var check = day + " " + month;
+      //alert(check);
+      var days = [ "30th Nov", "1st Dec"," 2nd Dec","3rd Dec", "4th Dec"];
       var str="";
       var o = "<th>";
       var c = "</th>";
@@ -707,37 +715,7 @@ td, th {
       }
       
       return str;
-    }
-    //Function that determines the information for the day and header for the first table
-    function findDay(vari){
-      var days = "Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday";
-      var daysInNumbers = days.split(",");
-      var reg = new RegExp(vari.toLowerCase());
-      var i;
-      for (i=0; i<daysInNumbers.length; i++){
-        var dateLower = daysInNumbers[i].toLowerCase();
-         if(reg.test(dateLower)){
-          return rearrangeDays(i, daysInNumbers);//contains the correct day
-         }
-      }
-    }
-    
-    function rearrangeDays(num, days){
-      var i;
-      var counter = 0;
-      var arr =[];
-      for (i=0;i<num;i++){
-        arr.push(days[i]);
-        counter++;
-      }
-      while (counter!=0){
-        days.shift();
-        counter--;
-      }
-      days = days.concat(arr);
-      return days;
-    }
-    
+    }    
   </script>
     <table id="movieTable">
       <tr id="dateRow">
