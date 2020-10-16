@@ -811,7 +811,7 @@ if(lastpart_movie  === "6808"){
 </li>
 <li class="col-md-3 col-sm-5 col-xs-6">
 <p>&nbsp;</p>
-<p class="ticket-content"><button class="btn btn-forth btn-sm" ng-click="getViewSeatsPlan()">View Seating Plan</button></p>
+<!--<p class="ticket-content"><button class="btn btn-forth btn-sm" ng-click="getViewSeatsPlan()">View Seating Plan</button></p>!-->
 </li>
 </ul>
 </div>
@@ -866,6 +866,27 @@ if(lastpart_movie  === "6808"){
     </tr>
     <tr>
       <td style="text-align:center">A</td>
+      <td style="text-align:center"><div class="square" style="margin:auto"></div></td>
+      <td style="text-align:center"><div class="square" style="margin:auto"></div></td>
+      <td style="text-align:center"><div class="square" style="margin:auto"></div></td>
+      <td style="text-align:center"><div class="square" style="margin:auto"></div></td>
+    </tr>
+    <tr>
+      <td style="text-align:center">B</td>
+      <td style="text-align:center"><div class="square" style="margin:auto"></div></td>
+      <td style="text-align:center"><div class="square" style="margin:auto"></div></td>
+      <td style="text-align:center"><div class="square" style="margin:auto"></div></td>
+      <td style="text-align:center"><div class="square" style="margin:auto"></div></td>
+    </tr>
+    <tr>
+      <td style="text-align:center">C</td>
+      <td style="text-align:center"><div class="square" style="margin:auto"></div></td>
+      <td style="text-align:center"><div class="square" style="margin:auto"></div></td>
+      <td style="text-align:center"><div class="square" style="margin:auto"></div></td>
+      <td style="text-align:center"><div class="square" style="margin:auto"></div></td>
+    </tr>
+    <tr>
+      <td style="text-align:center">D</td>
       <td style="text-align:center"><div class="square" style="margin:auto"></div></td>
       <td style="text-align:center"><div class="square" style="margin:auto"></div></td>
       <td style="text-align:center"><div class="square" style="margin:auto"></div></td>
@@ -1073,7 +1094,7 @@ The wheelchair berth is located at the front row of the cinema.
 </button>
 <div class="v-checkout-wrapper" style="margin: 0 auto; width: 355px;" ng-show="isVisaCheckout==true">
 <button type="button" class="btn btn-third btn-lg" ng-click="resetForm()">Cancel</button>
-<button type="button" class="btn btn-third btn-lg" style="background-color:green" ng-click="">Pay</button>
+<button type="button" onclick="self.close()" class="btn btn-third btn-lg" style="background-color:green" ng-click="">Pay</button>
 <a class="v-learn v-learn-default" href="#" data-locale="en_US" style="float: none; display: block; color: #4989C3; text-align: right;">Tell Me More</a>
 <div id="initialTotalAmount" style="display:none"></div>
 <div id="vc-error" style="color:red;display:none">There was an error processing your Visa Checkout login. Please try again or contact customer support.</div>
