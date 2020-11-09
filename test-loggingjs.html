@@ -1,0 +1,47 @@
+<html>
+<head>
+<title>Test Logging</title>
+<script src="logging.js"></script>
+</head>
+
+<body>
+
+<script>
+function sendCustomEvent() {
+	console.log('sendCustomEvent');
+	document.dispatchEvent(new CustomEvent('myevent', { detail: {
+		eventName: 'myeventName',
+		info: {'key1': 'val1', 'key2': 'val2'}
+	}}));
+}
+document.addEventListener('myevent', loggingjs.logEvent, true);
+
+function sendCustomEvent2() {
+	console.log('sendCustomEvent2');
+	loggingjs.logEvent(null, 'myevent2', {
+		eventName: 'myeventName',
+		info: {'key1': 'val1', 'key2': 'val2'}
+	});
+}
+
+function changeUrlParas(id){
+      //input code here to extract the searchbar
+      var timingPara = timing.split("_");
+      var date = timingPara[0];
+      var dateMonth = timingPara[1];
+      var dateTime = timingPara[2];
+      var dateYear = timingPara[3];
+      var newStr= date +"_"+ dateMonth+"_" + id+"_" + dateYear;
+      var str = "https://geraldcdx.github.io/ProjectGV/3rdPage?cinema=" + cinema + "&movie=" + movie + "&timing=" + newStr;
+      document.getElementById(id).setAttribute('href', str );   
+}
+</script>
+
+<div id="Mturk ID">Please input your MTurk ID</div>
+<input id="inText" type="text"/>
+<input id="btn" value="Start Trial" type="button" onclick="location.href='https://geraldcdx.github.io/ProjectGV/1stPage';"/>
+<input id="btn2" value="Send Custom Event 2" type="button" onclick="sendCustomEvent2()"/>
+
+</body>
+
+</html>
