@@ -15,7 +15,8 @@
   
   <h3>Logging Instrument: Lim Pei Ying</h3>
   <ul>
-<li>test-loggingjs: Contains code for logging time</li>
+  <li>loggingjs.js: Contains code for logging time and sending to Google Forms</li>
+<li>test-loggingjs,html: Contains to test the loggingjs.js script</li>
 
   </ul>
   
