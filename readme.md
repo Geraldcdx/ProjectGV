@@ -1,3 +1,4 @@
+### This was a simple project to replicate GV websites and change certain features to do UIUX quantitative testing for an NUS Masters level module.
 <h3>Full Stack Developer: Gerald Chua Deng Xiang</h3>
 <p>Prototype with searchbar: https://geraldcdx.github.io/ProjectGV/1stPage</p>
 <ul>
@@ -12,13 +13,8 @@
   <li>GVWebsite3.html</li>
   </ul>
   
-  
-  <h3>Logging Instrument: Lim Pei Ying</h3>
-  <ul>
-  <li>loggingjs.js: Contains code for logging time and sending to Google Forms</li>
-<li>test-loggingjs,html: Contains to test the loggingjs.js script</li>
 
-  </ul>
+  
   
 
 
